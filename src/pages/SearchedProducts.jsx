@@ -142,7 +142,7 @@ const SearchedProducts = () => {
           {searchResults.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
               {searchResults.map((product) => (
-                <Link to={`/products/${product.id}/view-details`} key={product.id} className="flex hover:border-gray-400 cursor-pointer w-[250px] flex-col justify-between gap-[2%] border shadow-md">
+                <Link to={`/products/${product._id}/view-details`} key={product.id} className="flex hover:border-gray-400 cursor-pointer w-[250px] flex-col justify-between gap-[2%] border shadow-md">
                   <div className="flex flex-col">
                     <img className='w-full' src={product.images[0]} alt={product.name} />
                     <div className="w-full flex p-2 justify-end gap-2">

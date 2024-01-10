@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { MdOutlineSearch } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
@@ -7,10 +8,11 @@ const Navbar = () => {
 
     const handleSearch = () => {
         // Redirect to the search results page with the search query as a URL parameter
-        navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+        navigate(`/search?query=${searchQuery}`);
     };
+
     return (
-        <nav className="bg-white px-[5%] border-b py-4 flex items-center justify-between">
+        <nav className="bg-white w-full px-[5%] border-b py-4 flex items-center justify-between">
             <div className="flex items-center space-x-4">
                 <a href="/" className="text-black text-xl font-bold">
                     Naswasoko
@@ -28,21 +30,24 @@ const Navbar = () => {
                     <Link to="/" className="text-gray-500 hover:text-black">
                         Recommended
                     </Link>
-
                 </ul>
             </div>
 
-            <form onSubmit={handleSearch} className="flex-grow px-4">
+            <div className="justify-between items-center flex px-4 bg-gray-100 w-[40%] text-black rounded-full border">
                 <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
-                    className="w-full px-4 py-2 bg-gray-100 text-black focus:outline-none outline-none rounded-full border"
+                    className="bg-transparent py-2 focus:outline-none outline-none"
+                    style={{ width: '60%' }}
                 />
-            </form>
+                <button onClick={handleSearch} className="">
+                    <MdOutlineSearch size={28} />
+                </button>
+            </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 ">
                 <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2 border border-black">
                     Sign Up
                 </Link>
@@ -55,4 +60,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
