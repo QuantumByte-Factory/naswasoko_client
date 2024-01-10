@@ -73,16 +73,16 @@ const SingleProduct = () => {
                         <span>Go back</span>
                     </button>
                     {loading ? (
-                        <Loading /> 
+                        <Loading />
                     ) : (
                         <div className="border p-4 flex flex-col md:flex-row w-full md:w-2/3">
-                            <div className="flex w-1/2">
-                                <div className="flex md:flex-col justify-start gap-2 mt-4">
+                            <div className="flex flex-col md:flex-row flex-wrap overflow-x-auto w-full md:w-1/2">
+                                <div className="flex md:flex-col justify-start md:justify-center md:mx-auto gap-2 mt-4">
                                     {product.images &&
                                         product.images.map((image, index) => (
                                             <img
                                                 key={index}
-                                                className={`w-20 h-20 object-cover ${selectedImage === image ? 'border-2 border-black' : 'opacity-90'
+                                                className={`w-20 h-20 object-cover ${selectedImage === image ? 'border-2 border-black' : 'opacity-70'
                                                     }`}
                                                 src={image}
                                                 alt={`Product ${index}`}
@@ -90,11 +90,11 @@ const SingleProduct = () => {
                                             />
                                         ))}
                                 </div>
-                                <div className="pl-[5%] w-2/3">
+                                <div className="pl-[5%] w-full md:w-2/3 mt-4 md:mt-0">
                                     <img className="w-[90%]" src={selectedImage} alt="" />
                                 </div>
                             </div>
-                            <div className="flex flex-col w-1/2">
+                            <div className="flex flex-col w-full md:w-1/2">
                                 <p className="text-gray-400 font-light text-[11px]">Category</p>
                                 <p className="font-medium text-[24px] ">{product?.title}</p>
                                 <p className="pt-4  text-[14px] font-light ">
@@ -117,7 +117,7 @@ const SingleProduct = () => {
                     <p className="text-[24px] font-medium mt-4 pb-2">Top Picks for you</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
                         {products.map((product) => (
-                            <Link to={`/products/${product._id}`} key={product.id} className="flex hover:border-black cursor-pointer w-[250px] flex-col justify-between gap-[2%] border shadow-md">
+                            <Link to={`/products/${product._id}`} key={product.id} className="flex hover:border-gray-400 cursor-pointer w-full md:w-[250px] flex-col justify-between gap-[2%] border shadow-md">
                                 <div className="flex flex-col">
                                     <img className='w-full' src={product?.image} alt={product.title} />
                                     <div className="w-full flex p-2 justify-end gap-2">

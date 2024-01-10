@@ -2,21 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { FaCartArrowDown, FaRegHeart } from 'react-icons/fa6';
 import { IoMdShare } from 'react-icons/io';
 import { MdVerified } from 'react-icons/md';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Loading from '../elements/Loading';
 
 const SearchedProducts = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState([]);
-  // Other state variables for filtering
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
+  const navigate = useNavigate();
 
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    navigate(`/search?query=${category}`);
+  };
+
+  const handleBrandClick = (brand) => {
+    setSelectedBrand(brand);
+    navigate(`/search?query=${brand}`);
+  };
 
   useEffect(() => {
     const fetchSearchResults = async () => {
@@ -40,49 +49,39 @@ const SearchedProducts = () => {
     }
   }, [query]);
 
-  const filteredProducts = products.filter((product) => {
-    const passCategoryFilter = !selectedCategory || product.category === selectedCategory;
-    const passBrandFilter = !selectedBrand || product.brand === selectedBrand;
-    const passPriceRangeFilter =
-      product.price >= priceRange.min && product.price <= priceRange.max;
-
-    return passCategoryFilter && passBrandFilter && passPriceRangeFilter;
-  });
-
-
   return (
     <div>
       <Navbar />
-      {loading && <p>Loading</p>}
+      {loading && <Loading />}
       <div className="flex gap-[2%] py-4 px-[5%]">
-        <div className="h-auto w-[11%] bg-gray-50 ">
+        <div className="h-auto hidden md:flex w-[11%] bg-gray-50 ">
           <aside className="w-full h-full shadow p-4">
             <div className="mb-4">
               <h2 className="text-lg font-semibold mb-2">Filter by</h2>
               <div className="flex flex-col space-y-2">
                 <button
-                  className={` flex text-[14px] py-2 ${selectedCategory === 'Category A' ? 'text-black font-medium' : 'text-gray-400'}`}
-                  onClick={() => setSelectedCategory('Category A')}
+                  className={`flex text-[14px] py-2 ${selectedCategory === 'Microwave' ? 'text-black font-medium' : 'text-gray-400'}`}
+                  onClick={() => handleCategoryClick('Microwave')}
                 >
-                  Category A
+                  Microwave
                 </button>
                 <button
-                  className={`flex text-[14px] py-2 ${selectedCategory === 'Category B' ? 'text-black font-medium' : 'text-gray-400'}`}
-                  onClick={() => setSelectedCategory('Category B')}
+                  className={`flex text-[14px] py-2 ${selectedCategory === 'Blender' ? 'text-black font-medium' : 'text-gray-400'}`}
+                  onClick={() => handleCategoryClick('Blender')}
                 >
-                  Category B
+                  Blender
                 </button>
                 <button
-                  className={` flex text-[14px] py-2 ${selectedCategory === 'Category A' ? 'text-black font-medium' : 'text-gray-400'}`}
-                  onClick={() => setSelectedCategory('Category A')}
+                  className={`flex text-[14px] py-2 ${selectedCategory === 'Fridge' ? 'text-black font-medium' : 'text-gray-400'}`}
+                  onClick={() => handleCategoryClick('Fridge')}
                 >
-                  Category A
+                  Fridge
                 </button>
                 <button
-                  className={`flex text-[14px] py-2 ${selectedCategory === 'Category B' ? 'text-black font-medium' : 'text-gray-400'}`}
-                  onClick={() => setSelectedCategory('Category B')}
+                  className={`flex text-[14px] py-2 ${selectedCategory === 'Cooker' ? 'text-black font-medium' : 'text-gray-400'}`}
+                  onClick={() => handleCategoryClick('Cooker')}
                 >
-                  Category B
+                  Cooker
                 </button>
               </div>
             </div>
@@ -91,28 +90,28 @@ const SearchedProducts = () => {
               <h2 className="text-lg font-semibold mb-2">Featured Brands</h2>
               <div className="flex flex-col space-y-2">
                 <button
-                  className={` flex text-[14px] py-2 ${selectedBrand === 'Brand X' ? 'text-black font-medium' : 'text-gray-400'}`}
-                  onClick={() => setSelectedBrand('Brand X')}
+                  className={`flex text-[14px] py-2 ${selectedBrand === 'Von' ? 'text-black font-medium' : 'text-gray-400'}`}
+                  onClick={() => handleBrandClick('Von')}
                 >
                   Von
                 </button>
                 <button
-                  className={` flex text-[14px] py-2  ${selectedBrand === 'Brand Y' ? 'text-black font-medium' : 'text-gray-400'}`}
-                  onClick={() => setSelectedBrand('Brand Y')}
+                  className={`flex text-[14px] py-2 ${selectedBrand === 'Mika' ? 'text-black font-medium' : 'text-gray-400'}`}
+                  onClick={() => handleBrandClick('Mika')}
+                >
+                  Mika
+                </button>
+                <button
+                  className={`flex text-[14px] py-2 ${selectedBrand === 'Hisense' ? 'text-black font-medium' : 'text-gray-400'}`}
+                  onClick={() => handleBrandClick('Hisense')}
                 >
                   Hisense
                 </button>
                 <button
-                  className={` flex text-[14px] py-2 ${selectedBrand === 'Brand X' ? 'text-black font-medium' : 'text-gray-400'}`}
-                  onClick={() => setSelectedBrand('Brand X')}
+                  className={`flex text-[14px] py-2 ${selectedBrand === 'Ramtons' ? 'text-black font-medium' : 'text-gray-400'}`}
+                  onClick={() => handleBrandClick('Ramtons')}
                 >
-                  Von
-                </button>
-                <button
-                  className={` flex text-[14px] py-2  ${selectedBrand === 'Brand Y' ? 'text-black font-medium' : 'text-gray-400'}`}
-                  onClick={() => setSelectedBrand('Brand Y')}
-                >
-                  Hisense
+                  Ramtons
                 </button>
               </div>
             </div>
@@ -142,7 +141,7 @@ const SearchedProducts = () => {
           {searchResults.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
               {searchResults.map((product) => (
-                <Link to={`/products/${product._id}/view-details`} key={product.id} className="flex hover:border-gray-400 cursor-pointer w-[250px] flex-col justify-between gap-[2%] border shadow-md">
+                <Link to={`/products/${product._id}`} key={product.id} className="flex hover:border-gray-400 cursor-pointer w-full md:w-[250px] flex-col justify-between gap-[2%] border shadow-md">
                   <div className="flex flex-col">
                     <img className='w-full' src={product.images[0]} alt={product.name} />
                     <div className="w-full flex p-2 justify-end gap-2">
