@@ -3,14 +3,15 @@ import { MdMenu, MdOutlineSearch } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsCart3 } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
+import { useCart } from '../CartContext';
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [openMenu, setOpenMenu] = useState(false);
     const navigate = useNavigate();
+    const { cartItems } = useCart();
 
     const handleSearch = () => {
-        // Redirect to the search results page with the search query as a URL parameter
         navigate(`/search?query=${searchQuery}`);
     };
 
@@ -81,7 +82,9 @@ const Navbar = () => {
                 </div>
 
                 <div className="hidden md:flex items-center space-x-4 ">
-                    <BsCart3 size={24} />
+                    <Link className='flex items-center' to='/cart'>
+                        <BsCart3 size={24} /> ({cartItems?.length})
+                    </Link>
                     <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2 border border-black">
                         Sign Up
                     </Link>

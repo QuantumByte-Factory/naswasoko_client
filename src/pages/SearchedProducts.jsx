@@ -5,6 +5,7 @@ import { MdVerified } from 'react-icons/md';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useCart } from '../CartContext';
 import Loading from '../elements/Loading';
 
 const SearchedProducts = () => {
@@ -16,6 +17,7 @@ const SearchedProducts = () => {
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -153,7 +155,7 @@ const SearchedProducts = () => {
                   <div className="p-4">
                     <p className="font-medium text-black text-[14px]">{product.title}</p>
                     <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}</p>
-                    <button className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2">Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' /></button>
+                    <button onClick={() => addToCart(product)} className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2">Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' /></button>
                   </div>
                 </Link>
               ))}

@@ -5,7 +5,8 @@ import { FaCartArrowDown, FaChevronDown, FaRegHeart } from 'react-icons/fa6';
 import { IoMdShare } from "react-icons/io";
 import { MdVerified } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom';
-import Loading from '../elements/Loading';
+import Loading from '../elements/Loading'; 
+import { useCart } from '../CartContext';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -13,6 +14,7 @@ const Products = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [selectedBrand, setSelectedBrand] = useState(null);
     const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
+    const { addToCart } = useCart();
 
     const navigate = useNavigate();
     useEffect(() => {
@@ -158,7 +160,7 @@ const Products = () => {
                                         <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}.00</p>
                                         <p className="text-gray-400 font-light text-[13px]">{product?.brand?.title}</p>
                                     </div>
-                                    <button className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2">Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' /></button>
+                                    <button onClick={() => addToCart(product)} className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2">Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' /></button>
                                 </div>
                             </Link>
                         ))}
