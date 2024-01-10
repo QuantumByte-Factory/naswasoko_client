@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MdOutlineSearch } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
+import { BsCart3 } from "react-icons/bs";
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -48,6 +49,7 @@ const Navbar = () => {
             </div>
 
             <div className="flex items-center space-x-4 ">
+                <BsCart3 size={24} />
                 <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2 border border-black">
                     Sign Up
                 </Link>
