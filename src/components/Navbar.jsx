@@ -1,7 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        // Redirect to the search results page with the search query as a URL parameter
+        navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+    };
     return (
         <nav className="bg-white px-[5%] border-b py-4 flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -25,13 +32,15 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            <div className="flex-grow px-4">
+            <form onSubmit={handleSearch} className="flex-grow px-4">
                 <input
                     type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
                     className="w-full px-4 py-2 bg-gray-100 text-black focus:outline-none outline-none rounded-full border"
                 />
-            </div>
+            </form>
 
             <div className="flex items-center space-x-4">
                 <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2 border border-black">

@@ -7,20 +7,13 @@ import { MdVerified } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 const Products = () => {
-    // Sample product data
     const [products, setProducts] = useState([]);
-    // Other state variables for filtering
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [selectedBrand, setSelectedBrand] = useState(null);
     const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
 
-    // Fetch product data or use an API call to get products
     useEffect(() => {
-        // Simulated product data
         const sampleProducts = [
-            // Sample product objects
-            // Include properties like id, name, image, category, brand, price, etc.
-            // Example:
             { id: 1, name: 'Red Shirt', image: 'https://skygarden2.azureedge.net/images-thumbnails/products/324648af60414662beb88e756600d667.jpg', category: 'Clothing', brand: 'Brand A', price: 25 },
             { id: 2, name: 'Blue Jeans', image: 'https://skygarden2.azureedge.net/images-thumbnails/products/71930daa64544c6db85a96555e24f8f4.jpg', category: 'Clothing', brand: 'Brand B', price: 45 },
             { id: 3, name: 'Running Shoes', image: 'https://skygarden2.azureedge.net/images-thumbnails/products/e55a96c145fa4b9290fdc2765c141fea.jpg', category: 'Footwear', brand: 'Brand C', price: 60 },
