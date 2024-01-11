@@ -90,7 +90,7 @@ const Navbar = () => {
                     </Link>
                     {user ?
                         <div className='flex items-center gap-2'>
-                            <p className="">{user.fullName}</p>
+                            <Link to={`/orders/${user._id}`} className="">{user.fullName}</Link>
                             <FaUserCircle size={24} />
                         </div> : <>
                             <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2 border border-black">

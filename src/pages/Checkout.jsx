@@ -1,52 +1,45 @@
 // Checkout.js
 import React, { useState } from 'react';
 import { useCart } from '../CartContext';
+import axios from 'axios';  // Import Axios
 import Navbar from '../components/Navbar';
+import { useUser } from '../UserContext';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
     const { cartItems, clearCart } = useCart();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
     const [location, setLocation] = useState('');
+    const [error, setError] = useState('');
+    const user = useUser();
+    const navigate = useNavigate();
 
     const calculateTotal = () => {
         return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     };
 
     const handlePlaceOrder = async () => {
-        // Implement order placement logic here
-        // You can use a backend API to process the order
         const orderData = {
-            name,
-            email,
-            phoneNumber,
+            products: cartItems.map(item => ({ product: item._id, quantity: item.quantity })),
             location,
-            items: cartItems,
+            user: user._id,
         };
 
         try {
-            const response = await fetch('http://your-api-endpoint/order', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(orderData),
-            });
+            const response = await axios.post('http://localhost:4000/api/v1/orders', orderData);
 
-            if (response.ok) {
-                // Order placed successfully, you may want to show a success message
-                console.log('Order placed successfully!');
-                // Clear the cart after successful order placement
+            if (response.status === 201) {
+                navigate('/orders')
                 clearCart();
             } else {
                 console.error('Failed to place the order');
                 // Handle error scenario, show an error message to the user
+                setError('Failed to place the order');
             }
         } catch (error) {
-            console.error('Error placing order:', error);
+            console.error('Error placing order:', error.message);
             // Handle error scenario, show an error message to the user
+            setError('Error placing order. Please try again later.');
         }
     };
 
@@ -57,60 +50,19 @@ const Checkout = () => {
                 <h1 className="text-2xl font-semibold mb-4">Checkout</h1>
                 <div className="grid grid-cols-2 gap-8">
                     <div>
-                        <form onSubmit={(e) => e.preventDefault()} className="mx-auto p-6 bg-gray-100">
-                            <div className="mb-4">
-                                <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                    className="w-full px-3 py-2 border focus:outline-none focus:border-black"
-                                    placeholder="John Doe"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                    className="w-full px-3 py-2 border focus:outline-none focus:border-black"
-                                    placeholder="john@example.com"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="phoneNumber" className="block text-gray-700 text-sm font-bold mb-2">Phone Number:</label>
-                                <input
-                                    type="tel"
-                                    id="phoneNumber"
-                                    value={phoneNumber}
-                                    onChange={(e) => setPhoneNumber(e.target.value)}
-                                    required
-                                    className="w-full px-3 py-2 border focus:outline-none focus:border-black"
-                                    placeholder="+254 00 000-000"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="location" className="block text-gray-700 text-sm font-bold mb-2">Location:</label>
-                                <input
-                                    type="text"
-                                    id="location"
-                                    value={location}
-                                    onChange={(e) => setLocation(e.target.value)}
-                                    required
-                                    className="w-full px-3 py-2 border focus:outline-none focus:border-black"
-                                    placeholder="City, Country"
-                                />
-                            </div>
-                            <button onClick={handlePlaceOrder} className="w-full bg-black text-white px-4 py-2 transition duration-300 focus:outline-none">
-                                Place Order
-                            </button>
-                        </form>
-
+                        <div className="mb-4">
+                            <label htmlFor="location" className="block text-gray-700 text-sm font-bold mb-2">Location:</label>
+                            <input
+                                type="text"
+                                id="location"
+                                value={location}
+                                onChange={(e) => setLocation(e.target.value)}
+                                required
+                                className="w-full px-3 py-2 border focus:outline-none focus:border-black"
+                                placeholder="City, Country"
+                            />
+                        </div>
+                        {error && <p className="text-red-500">{error}</p>}
                     </div>
                     <div>
                         <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
@@ -128,6 +80,9 @@ const Checkout = () => {
                             <p className="font-semibold">Total:</p>
                             <p className="font-semibold">Ksh {calculateTotal().toLocaleString('en-US')}</p>
                         </div>
+                        <button onClick={handlePlaceOrder} className="w-full bg-black text-white px-4 py-2 transition duration-300 focus:outline-none mt-4">
+                            Place Order
+                        </button>
                     </div>
                 </div>
             </div>
