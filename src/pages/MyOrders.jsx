@@ -12,7 +12,7 @@ const MyOrders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.get(`http://localhost:4000/api/v1/orders/user/${id}`);
+                const response = await axios.get(`https://naswa.onrender.com/api/v1/orders/user/${id}`);
                 setOrders(response.data);
                 setLoading(false);
             } catch (error) {

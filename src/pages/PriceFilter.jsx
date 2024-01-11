@@ -8,7 +8,7 @@ const ProductFilter = () => {
 
     const handleFilter = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/products/filter-by-price?minPrice=${minPrice}&maxPrice=${maxPrice}`);
+            const response = await axios.get(`https://naswa.onrender.com/api/products/filter-by-price?minPrice=${minPrice}&maxPrice=${maxPrice}`);
             setFilteredProducts(response.data);
         } catch (error) {
             console.error('Error filtering products:', error);

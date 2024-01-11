@@ -21,7 +21,7 @@ const Products = () => {
         const fetchProducts = async () => {
             setLoading(true);
             try {
-                const response = await fetch('http://localhost:4000/api/products');
+                const response = await fetch('https://naswa.onrender.com/api/products');
                 if (response.ok) {
                     const data = await response.json();
                     setProducts(data); // Set fetched products to the state

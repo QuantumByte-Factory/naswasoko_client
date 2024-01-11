@@ -26,7 +26,7 @@ const SingleProduct = () => {
         const fetchProduct = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`http://localhost:4000/api/products/${id}`);
+                const response = await fetch(`https://naswa.onrender.com/api/products/${id}`);
                 if (response.ok) {
                     const data = await response.json();
                     setProduct(data);
@@ -50,7 +50,7 @@ const SingleProduct = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('http://localhost:4000/api/products/new');
+                const response = await fetch('https://naswa.onrender.com/api/products/new');
                 if (response.ok) {
                     const data = await response.json();
                     setProducts(data); // Set fetched products to the state

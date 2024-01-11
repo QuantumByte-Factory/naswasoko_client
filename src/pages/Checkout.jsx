@@ -26,7 +26,7 @@ const Checkout = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:4000/api/v1/orders', orderData);
+            const response = await axios.post('https://naswa.onrender.com/api/v1/orders', orderData);
 
             if (response.status === 201) {
                 navigate('/orders')

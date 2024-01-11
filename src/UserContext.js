@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
                 const token = localStorage.getItem('token');
 
                 if (token) {
-                    const response = await axios.get('http://localhost:4000/api/v1/profile', {
+                    const response = await axios.get('https://naswa.onrender.com/api/v1/profile', {
                         headers: {
                             Authorization: token,
                         },
