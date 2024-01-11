@@ -4,12 +4,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { BsCart3 } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import { useCart } from '../CartContext';
+import { useUser } from '../UserContext';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [openMenu, setOpenMenu] = useState(false);
     const navigate = useNavigate();
     const { cartItems } = useCart();
+    const user = useUser();
 
     const handleSearch = () => {
         navigate(`/search?query=${searchQuery}`);
@@ -85,12 +88,18 @@ const Navbar = () => {
                     <Link className='flex items-center' to='/cart'>
                         <BsCart3 size={24} /> ({cartItems?.length})
                     </Link>
-                    <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2 border border-black">
-                        Sign Up
-                    </Link>
-                    <Link to='/accounts/login' className="bg-white text-black border border-black px-4 py-2">
-                        Login
-                    </Link>
+                    {user ?
+                        <div className='flex items-center gap-2'>
+                            <p className="">{user.fullName}</p>
+                            <FaUserCircle size={24} />
+                        </div> : <>
+                            <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2 border border-black">
+                                Sign Up
+                            </Link>
+                            <Link to='/accounts/login' className="bg-white text-black border border-black px-4 py-2">
+                                Login
+                            </Link>
+                        </>}
                 </div>
 
             </nav>

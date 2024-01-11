@@ -1,16 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post('http://localhost:4000/api/v1/users', {
+                fullName,
+                email,
+                phoneNumber,
+                password,
+            });
+            const token = response.data.token;
+
+            localStorage.setItem('token', token);
+
+           navigate('/')
+        } catch (error) {
+            if (error.response) {
+                console.error('Registration failed:', error.response.data.error);
+            } else if (error.request) {
+                console.error('No response received from the server');
+            } else {
+                console.error('Error during registration:', error.message);
+            }
+        }
+    };
     return (
         <div className="flex justify-center items-center h-screen bg-gradient-to-r from-black to-white">
             <div className="bg-white p-8 shadow-md w-full sm:w-96">
                 <h2 className="text-3xl font-semibold mb-6 text-center text-gray-900">Create an Account</h2>
-                <form>
+                <form onSubmit={handleSignUp}>
                     <div className="mb-6">
                         <label htmlFor="fullName" className="block text-sm font-semibold mb-2 text-gray-900">Full Name</label>
                         <input
                             type="text"
+                            value={fullName}
+                            onChange={(e) => setFullName(e.target.value)}
                             id="fullName"
                             className="w-full border-b-2 border-gray-400 py-2 px-3 focus:outline-none focus:border-black transition duration-300"
                             placeholder="Enter your full name"
@@ -20,15 +54,30 @@ const SignUp = () => {
                         <label htmlFor="email" className="block text-sm font-semibold mb-2 text-gray-900">Email</label>
                         <input
                             type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             id="email"
                             className="w-full border-b-2 border-gray-400 py-2 px-3 focus:outline-none focus:border-black transition duration-300"
                             placeholder="Enter your email"
                         />
                     </div>
                     <div className="mb-6">
+                        <label htmlFor="phoneNumber" className="block text-sm font-semibold mb-2 text-gray-900">Phone Number</label>
+                        <input
+                            type="text"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            id="phoneNumber"
+                            className="w-full border-b-2 border-gray-400 py-2 px-3 focus:outline-none focus:border-black transition duration-300"
+                            placeholder="Enter your phone number"
+                        />
+                    </div>
+                    <div className="mb-6">
                         <label htmlFor="password" className="block text-sm font-semibold mb-2 text-gray-900">Password</label>
                         <input
                             type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             id="password"
                             className="w-full border-b-2 border-gray-400 py-2 px-3 focus:outline-none focus:border-black transition duration-300"
                             placeholder="Enter your password"
