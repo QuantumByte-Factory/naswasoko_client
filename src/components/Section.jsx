@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Section = () => {
     const [products, setProducts] = useState([]);
@@ -48,14 +49,14 @@ const Section = () => {
             </div>
             <div className="flex flex-col md:flex-row gap-[2%]">
                 {data.slice(4, 9).map((product) => (
-                    <div key={product.id} className="flex flex-col justify-between gap-[2%] border shadow-md">
+                    <Link to={`/products/${product._id}`}  key={product.id} className="flex flex-col justify-between gap-[2%] border shadow-md">
                         <img className='w-full' src={product.images[0]} alt={product.name} />
                         <div className="p-4">
                             <p className="font-medium text-black text-[14px]">{product.title}</p>
                             <p className="text-[16px] font-medium text-gray-700 py-2">{product.price}</p>
                             <button className="w-full py-2 bg-black text-white text-[14px] mb-2">Add to Cart</button>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
 
@@ -67,14 +68,14 @@ const Section = () => {
             </div>
             <div className="flex flex-col w-full md:flex-row gap-[2%]">
                 {data.slice(1, 7).map((product) => (
-                    <div key={product.id} className="flex w-full md:w-[250px] flex-col justify-between gap-[2%] border shadow-md">
+                    <Link to={`/products/${product._id}`}  key={product.id} className="flex w-full md:w-[250px] flex-col justify-between gap-[2%] border shadow-md">
                         <img className='w-full' src={product.images[0]} alt={product.name} />
                         <div className="p-4">
                             <p className="font-medium text-black text-[14px]">{product.title}</p>
                             <p className="text-[16px] font-medium text-gray-700 py-2">{product.price}</p>
                             <button className="w-full py-2 bg-black text-white text-[14px] mb-2">Add to Cart</button>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
 
@@ -86,16 +87,16 @@ const Section = () => {
                     <p className='text-white text-[26px] font-medium px-4 '>Electronics</p>
                     <button className="bg-gray-100 bg-opacity-70 text-gray-800 mx-4 py-1.5 font-medium">View All</button>
                 </div>
-                <div className="flex flex-col w-full md:flex-row gap-[2%]">
+                <div  className="flex flex-col w-full md:flex-row gap-[2%]">
                     {products.slice(0, 5).map((product) => (
-                        <div key={product.id} className="flex w-full md:w-[250px] flex-col justify-between gap-[2%] border shadow-md">
+                        <Link to={`/products/${product._id}`}  key={product.id} className="flex w-full md:w-[250px] flex-col justify-between gap-[2%] border shadow-md">
                             <img className='w-full' src={product.image} alt={product.name} />
                             <div className="p-4">
                                 <p className="font-medium text-black text-[14px]">{product.title}</p>
                                 <p className="text-[16px] font-medium text-gray-700 py-2">{product.price}</p>
                                 <button className="w-full py-2 bg-black text-white text-[14px] mb-2">Add to Cart</button>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>
