@@ -21,10 +21,20 @@ const Navbar = () => {
 
     return (
         <>
+            <nav className="bg-black py-3 px-[5%] flex items-center w-full justify-between text-white text-[15px]">
+                <div className="flex gap-4 items-center ">
+                    <p className='text-gray-500 font-light hover:text-gray-100 cursor-pointer'>Track Order</p>
+                    <p className='text-gray-500 font-light hover:text-gray-100 cursor-pointer'>sales@naswasoko.co.ke</p>
+                </div>
+                <div className="flex gap-4 items-center ">
+                    <Link to={`/sell/login`} className='text-gray-500 font-light hover:text-gray-100 cursor-pointer'>Sell with Naswasoko</Link>
+                    <p className='text-gray-500 font-light hover:text-gray-100 cursor-pointer'>Help & support</p>
+                </div>
+            </nav>
             <nav className="bg-white w-full px-[5%] border-b py-4 flex items-center justify-between">
                 <div className="flex items-center w-full md:w-fit justify-between md:justify-center space-x-4 relative">
                     <a href="/" className="text-black text-xl font-bold">
-                        <img className='w-[100px] md:w-[130px]' src={logo} alt="" />
+                        <img className='w-[100px] md:w-[150px]' src={logo} alt="" />
                     </a>
                     <div className="flex md:hidden">
                         <div className="flex items-center gap-2">

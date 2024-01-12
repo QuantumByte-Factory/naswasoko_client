@@ -8,6 +8,8 @@ import SearchedProducts from './pages/SearchedProducts';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import MyOrders from './pages/MyOrders';
+import SellerLogin from './pages/SellerLogin';
+import SellerRegister from './pages/SellerRegister';
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
       <Route path='/' element={<Home />} />
       <Route path='/accounts/login' element={<Login />} />
       <Route path='/accounts/sign-up' element={<SignUp />} />
+
+      <Route path='/sell/login' element={<SellerLogin />} />
+      <Route path='/sell/sign-up' element={<SellerRegister />} />
       <Route path='/shop/all-products' element={<Products />} />
       <Route path='/products/:id' element={<SingleProduct />} />
       <Route path="/search" element={<SearchedProducts />} />

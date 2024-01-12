@@ -41,7 +41,7 @@ const Footer = () => {
                             <br />
                             +123456789
                             <br />
-                            info@naswasoko.co.ke
+                            sales@naswasoko.co.ke
                         </p>
                     </div>
 
