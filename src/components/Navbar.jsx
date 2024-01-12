@@ -6,6 +6,7 @@ import { IoMdClose } from "react-icons/io";
 import { useCart } from '../CartContext';
 import { useUser } from '../UserContext';
 import { FaUserCircle } from 'react-icons/fa';
+import logo from '../assets/naswasokologo.png'
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -23,7 +24,7 @@ const Navbar = () => {
             <nav className="bg-white w-full px-[5%] border-b py-4 flex items-center justify-between">
                 <div className="flex items-center w-full md:w-fit justify-between md:justify-center space-x-4 relative">
                     <a href="/" className="text-black text-xl font-bold">
-                        Naswasoko
+                        <img className='w-[100px] md:w-[130px]' src={logo} alt="" />
                     </a>
                     <div className="flex md:hidden">
                         <div className="flex items-center gap-2">
