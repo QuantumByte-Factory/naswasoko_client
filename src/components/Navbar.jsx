@@ -28,13 +28,15 @@ const Navbar = () => {
                     </a>
                     <div className="flex md:hidden">
                         <div className="flex items-center gap-2">
-                            <BsCart3 size={24} />
+                            <Link className='flex items-center' to='/cart'>
+                                <BsCart3 size={24} /> ({cartItems?.length})
+                            </Link>
                             <button className='' onClick={() => setOpenMenu(!openMenu)}>
                                 {openMenu ? <IoMdClose size={24} /> : <MdMenu size={24} />}
                             </button>
                         </div>
                         {openMenu &&
-                            <div className="bg-gray-200 p-2  flex flex-col justify-start absolute left-0 h-full top-full w-full h-[180px] z-20">
+                            <div className="bg-gray-200 p-2  flex flex-col justify-start absolute left-0 h-[200px] top-full w-full h-[180px] z-20">
                                 <Link to="/" className="text-black ">
                                     Home
                                 </Link>
@@ -47,12 +49,18 @@ const Navbar = () => {
                                 <Link to="/" className="text-black">
                                     Recommended
                                 </Link>
-                                <Link to='/accounts/sign-up' className="bg-gray-100 flex py-1 justify-center text-black">
-                                    Sign Up
-                                </Link>
-                                <Link to='/accounts/login' className="bg-black mt-2 flex py-1 justify-center text-white">
-                                    Login
-                                </Link>
+                                {user ? <div className='flex items-center gap-2'>
+                                    <Link to={`/orders/${user._id}`} className="">{user.fullName}</Link>
+                                    {/* <FaUserCircle size={24} /> */}
+                                </div> : <>
+                                        <Link to='/accounts/sign-up' className="bg-gray-100 flex py-1 justify-center text-black">
+                                            Sign Up
+                                        </Link>
+                                        <Link to='/accounts/login' className="bg-black mt-2 flex py-1 justify-center text-white">
+                                            Login
+                                        </Link>
+                                </>}
+                                
                             </div>}
                     </div>
                     <ul className="hidden md:flex space-x-4 text-[14px]">
