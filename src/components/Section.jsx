@@ -47,7 +47,7 @@ const Section = () => {
                 </button>
             </div>
             <div className="flex flex-col md:flex-row gap-[2%]">
-                {data.slice(4, 11).map((product) => (
+                {data.slice(4, 9).map((product) => (
                     <div key={product.id} className="flex flex-col justify-between gap-[2%] border shadow-md">
                         <img className='w-full' src={product.images[0]} alt={product.name} />
                         <div className="p-4">

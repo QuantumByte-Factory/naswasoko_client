@@ -22,10 +22,6 @@ const Hero = () => {
           <p className='text-[20px] font-medium mb-4'>Kitchen Appliances</p>
           <img className='h-full' src="https://sky.garden/assets/images/category-card-images/standby/Smartphones.jpg" alt="" />
         </div>
-        {/* <div className="bg-white p-3 flex cursor-pointer flex-col shadow-md w-[180px] bg-opacity-70 justify-center text-center h-[220px]">
-          <p className='text-[20px] font-medium mb-4'>Home Appliances</p>
-          <img className='h-full' src="https://sky.garden/assets/images/category-card-images/standby/Furniture.jpg" alt="" />
-        </div> */}
       </div>
     </div>
   )
