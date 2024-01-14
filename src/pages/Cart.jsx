@@ -28,19 +28,15 @@ const Cart = () => {
     const handleWhatsAppCheckout = () => {
     const formattedProducts = cartItems.map((item, index) => `${index + 1}. ${item.title} (${item.quantity})`).join('\n');
 
-    // Get today's date
     const today = new Date();
     const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
 
     const message = `Hello naswasoko, I would like you to deliver the following products:\n${formattedProducts}\non ${formattedDate}.\nThank you`;
 
-    // Replace with the actual WhatsApp phone number
-    const phoneNumber = '+254113794219';
+    const phoneNumber = '+254729776804';
 
-    // Create a WhatsApp link with the message
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-    // Open the link in a new tab
     window.open(whatsappLink, '_blank');
 };
 
