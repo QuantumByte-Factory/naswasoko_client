@@ -4,7 +4,6 @@ import { FaCartArrowDown, FaChevronDown, FaRegHeart } from 'react-icons/fa6';
 import { IoMdShare } from "react-icons/io";
 import { MdVerified } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom';
-import Loading from '../elements/Loading'; 
 import { useCart } from '../CartContext';
 import Loader from '../elements/Loader';
 
@@ -74,7 +73,7 @@ const Products = () => {
                 <div className="h-auto hidden md:flex w-[11%] bg-gray-50 ">
                     <aside className="w-full h-full shadow p-4">
                         <div className="mb-4">
-                            <h2 className="text-lg font-semibold mb-2">Filter by</h2>
+                            <h2 className="text-lg font-semibold mb-2">Find</h2>
                             <div className="flex flex-col space-y-2">
                                 <button
                                     className={`flex text-[14px] py-2 ${selectedCategory === 'Microwave' ? 'text-black font-medium' : 'text-gray-400'}`}

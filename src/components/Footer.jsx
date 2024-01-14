@@ -21,10 +21,10 @@ const Footer = () => {
                                 <a href="#home">Home</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#products">Products</a>
+                                <a href="/shop/all-products">Products</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#about">About</a>
+                                <a href="/">About</a>
                             </li>
                             <li className="mb-2">
                                 <a href="#contact">Contact</a>

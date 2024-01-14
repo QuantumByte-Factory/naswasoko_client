@@ -53,7 +53,7 @@ const Section = () => {
                         <img className='w-full' src={product.images[0]} alt={product.name} />
                         <div className="p-4">
                             <p className="font-medium text-black text-[14px]">{product.title}</p>
-                            <p className="text-[16px] font-medium text-gray-700 py-2">{product.price}</p>
+                            <p className="text-[16px] font-medium text-gray-700 py-2">{product.price.toLocaleString("KES")}</p>
                             <button className="w-full py-2 bg-black text-white text-[14px] mb-2">Add to Cart</button>
                         </div>
                     </Link>
@@ -72,7 +72,7 @@ const Section = () => {
                         <img className='w-full' src={product.images[0]} alt={product.name} />
                         <div className="p-4">
                             <p className="font-medium text-black text-[14px]">{product.title}</p>
-                            <p className="text-[16px] font-medium text-gray-700 py-2">{product.price}</p>
+                            <p className="text-[16px] font-medium text-gray-700 py-2">{product.price.toLocaleString("KES")}</p>
                             <button className="w-full py-2 bg-black text-white text-[14px] mb-2">Add to Cart</button>
                         </div>
                     </Link>
@@ -93,7 +93,7 @@ const Section = () => {
                             <img className='w-full' src={product.image} alt={product.name} />
                             <div className="p-4">
                                 <p className="font-medium text-black text-[14px]">{product.title}</p>
-                                <p className="text-[16px] font-medium text-gray-700 py-2">{product.price}</p>
+                                <p className="text-[16px] font-medium text-gray-700 py-2">{product.price.toLocaleString("KES")}</p>
                                 <button className="w-full py-2 bg-black text-white text-[14px] mb-2">Add to Cart</button>
                             </div>
                         </Link>
