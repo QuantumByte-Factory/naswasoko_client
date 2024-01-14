@@ -26,13 +26,13 @@ const Cart = () => {
     }, 0);
 
     const handleWhatsAppCheckout = () => {
-    const formattedProducts = cartItems.map(item => `${item.title} (${item.quantity})`).join(', ');
+    const formattedProducts = cartItems.map((item, index) => `${index + 1}. ${item.title} (${item.quantity})`).join('\n');
 
     // Get today's date
     const today = new Date();
     const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
 
-    const message = `Hello naswasoko, I would like you to deliver the following products: ${formattedProducts} on ${formattedDate}. Thank you`;
+    const message = `Hello naswasoko, I would like you to deliver the following products:\n${formattedProducts}\non ${formattedDate}.\nThank you`;
 
     // Replace with the actual WhatsApp phone number
     const phoneNumber = '+254113794219';
@@ -43,6 +43,7 @@ const Cart = () => {
     // Open the link in a new tab
     window.open(whatsappLink, '_blank');
 };
+
 
     // HAALFS2J23P26EMM9CKLMUQR
 

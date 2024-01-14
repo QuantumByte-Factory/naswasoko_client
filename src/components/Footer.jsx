@@ -39,7 +39,7 @@ const Footer = () => {
                         <p className="text-sm">
                             Downtown CBD, Moi Avenue
                             <br />
-                            +123456789
+                            +254 729 776 804
                             <br />
                             sales@naswasoko.co.ke
                         </p>
