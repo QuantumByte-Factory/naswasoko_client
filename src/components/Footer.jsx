@@ -9,8 +9,7 @@ const Footer = () => {
                     <div className="mb-8">
                         <h4 className="text-lg font-semibold mb-4">About Us</h4>
                         <p className="text-sm">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                            justo sit amet risus cursus ullamcorper.
+                            Leading seller in home and kitchen appliances, to all electronics you need. Payment is done on delivery, therefore you are assured of getting what you orderd, before spending your money.
                         </p>
                     </div>
 

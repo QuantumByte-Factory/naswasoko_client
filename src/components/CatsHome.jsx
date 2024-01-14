@@ -1,4 +1,10 @@
 import React from 'react'
+import hisense from '../assets/Hisense.png'
+import jbl from '../assets/JBL.png'
+import mika from '../assets/Mika.webp'
+import ramtons from '../assets/ramtons.jpg'
+import samsung from '../assets/Samsung.png'
+import tcl from '../assets/tcl.jpg'
 
 const CatsHome = () => {
     return (
@@ -42,22 +48,13 @@ const CatsHome = () => {
             </div>
             <div className="bg-[#222222] flex flex-col py-[2%] px-[5%] text-white ">
                 <p className='text-gray-100 font-medium text-[28px] mb-2'>Brands You Know</p>
-                <div className="flex gap-[2%]">
-                    <img className='w-[100px]' src="https://skygarden2.azureedge.net/media/original_images/logo.png" alt="" />
-                    <div className="bg-white">
-                        <img className='w-[100px]' src="https://skygarden2.azureedge.net/media/original_images/Hisense.png" alt="" />
-                    </div>
-                    <div className="bg-white">
-                        <img className='w-[100px]' src="https://skygarden2.azureedge.net/media/original_images/Hotpoint_2.png" alt="" />
-                    </div>
-                    <img className='w-[100px]' src="https://skygarden2.azureedge.net/media/original_images/313396187_444589584481313_8368165958352328_n.jpg" alt="" />
-                    <img className='w-[100px]' src="https://skygarden2.azureedge.net/media/original_images/download_1.png" alt="" />
-                    <div className="bg-gray-50">
-                        <img className='w-[100px]' src="https://skygarden2.azureedge.net/media/original_images/lg_1.png" alt="" />
-                    </div>
-                    <div className="bg-white">
-                        <img className='w-[100px]' src="https://skygarden2.azureedge.net/media/original_images/Mika.png" alt="" />
-                    </div>
+                <div className="flex w-full overflow-x-auto gap-[2%]">
+                    <img className='w-[150px] my-auto h-[50px]' src={tcl} alt="" />
+                    <img className='w-[100px]' src={hisense} alt="" />
+                    <img className='w-[130px]' src={samsung} alt="" />
+                    <img className='w-[100px]' src={jbl} alt="" />
+                    <img className='w-[150px] text-white bg-white' src={mika} alt="" />
+                    <img className='w-[150px] h-[50px] my-auto' src={ramtons} alt="" />
                 </div>
             </div>
             <div className="w-full flex flex-col md:flex-row py-[5%] px-[5%] gap-[2%] ">

@@ -6,7 +6,7 @@ import { IoMdClose } from "react-icons/io";
 import { useCart } from '../CartContext';
 import { useUser } from '../UserContext';
 import { FaUserCircle } from 'react-icons/fa';
-import logo from '../assets/naswasokologo.png'
+import logo from '../assets/Naswa Soko Logo-01.png'
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -37,7 +37,7 @@ const Navbar = () => {
                         <img className='w-[100px] md:w-[150px]' src={logo} alt="" />
                     </a>
                     <div className="flex md:hidden">
-                        <div className="flex items-center gap-2">
+                        <div className="flex text-white items-center gap-2">
                             <Link className='flex items-center' to='/cart'>
                                 <BsCart3 size={24} /> ({cartItems?.length})
                             </Link>
