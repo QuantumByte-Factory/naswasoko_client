@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
+import React, { useState, useEffect, useRef } from 'react';import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { FaCartArrowDown, FaChevronDown, FaRegHeart } from 'react-icons/fa6';
 import { IoMdShare } from "react-icons/io";
@@ -7,6 +6,7 @@ import { MdVerified } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../elements/Loading'; 
 import { useCart } from '../CartContext';
+import Loader from '../elements/Loader';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -14,17 +14,21 @@ const Products = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [selectedBrand, setSelectedBrand] = useState(null);
     const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
-    const { addToCart } = useCart();
+    const [currentPage, setCurrentPage] = useState(1);
 
+    const { addToCart } = useCart();
     const navigate = useNavigate();
+
+    const loader = useRef(null);
+
     useEffect(() => {
         const fetchProducts = async () => {
             setLoading(true);
             try {
-                const response = await fetch('https://naswa.onrender.com/api/products');
+                const response = await fetch(`https://naswa.onrender.com/api/products?page=${currentPage}`);
                 if (response.ok) {
                     const data = await response.json();
-                    setProducts(data); // Set fetched products to the state
+                    setProducts(prevProducts => [...prevProducts, ...data]); // Append fetched products to the existing ones
                 } else {
                     console.error('Failed to fetch products');
                 }
@@ -35,8 +39,7 @@ const Products = () => {
         };
 
         fetchProducts();
-    }, []);
-
+    }, [currentPage]); // Trigger the fetch when the currentPage changes
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
@@ -47,10 +50,26 @@ const Products = () => {
         setSelectedBrand(brand);
         navigate(`/search?query=${brand}`);
     };
+
+    const handleScroll = () => {
+        if (loader.current && loader.current.getBoundingClientRect().bottom <= window.innerHeight) {
+            // Load more products when the user scrolls to the bottom
+            setCurrentPage(prevPage => prevPage + 1);
+        }
+    };
+
+    useEffect(() => {
+        // Add a scroll event listener to detect when the user scrolls
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            // Remove the event listener when the component is unmounted
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <>
             <Navbar />
-            {loading && <Loading />}
             <div className="flex py-[2%] px-[5%]">
                 <div className="h-auto hidden md:flex w-[11%] bg-gray-50 ">
                     <aside className="w-full h-full shadow p-4">
@@ -167,6 +186,8 @@ const Products = () => {
                     </div>
                 </div>
             </div>
+            <div ref={loader}></div>
+            {loading && <Loader />}
             <Footer />
         </>
     );
