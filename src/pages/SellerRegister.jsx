@@ -15,8 +15,8 @@ const SellerRegister = () => {
     console.log('Sign Up clicked');
   };
   return (
-    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-black to-white">
-      <div className="bg-white p-8 shadow-md w-full sm:w-96">
+    <div className="flex justify-center items-center overflow-y-auto h-screen bg-gradient-to-r from-black to-white">
+      <div className="bg-white p-8 shadow-md overflow-y-auto w-full sm:w-96">
         <h2 className="text-3xl font-semibold mb-6 text-center text-gray-800">Join us and Start Selling!</h2>
         <form onSubmit={handleSignUp}>
           <div className="mb-6">

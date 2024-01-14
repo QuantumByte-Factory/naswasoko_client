@@ -21,17 +21,17 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="bg-black py-3 px-[5%] flex items-center w-full justify-between text-white text-[15px]">
+            <nav className="bg-white py-3 px-[5%] flex items-center w-full justify-between text-white text-[15px]">
                 <div className="flex gap-4 items-center ">
-                    <p className='text-gray-500 font-light hover:text-gray-100 cursor-pointer'>Track Order</p>
-                    <p className='text-gray-500 font-light hover:text-gray-100 cursor-pointer'>sales@naswasoko.co.ke</p>
+                    <p className='text-gray-500 font-light hover:text-black cursor-pointer'>Track Order</p>
+                    <p className='text-gray-500 hidden md:flex font-light hover:text-black cursor-pointer'>sales@naswasoko.co.ke</p>
                 </div>
                 <div className="flex gap-4 items-center ">
-                    <Link to={`/sell/login`} className='text-gray-500 font-light hover:text-gray-100 cursor-pointer'>Sell with Naswasoko</Link>
-                    <p className='text-gray-500 font-light hover:text-gray-100 cursor-pointer'>Help & support</p>
+                    <Link to={`/sell/login`} className='text-gray-500 font-light hover:text-black cursor-pointer'>Sell with Naswasoko</Link>
+                    <p className='text-gray-500 hidden md:flex font-light hover:text-black cursor-pointer'>Help & support</p>
                 </div>
             </nav>
-            <nav className="bg-white w-full px-[5%] border-b py-4 flex items-center justify-between">
+            <nav className="bg-black w-full px-[5%] border-b py-4 flex items-center justify-between">
                 <div className="flex items-center w-full md:w-fit justify-between md:justify-center space-x-4 relative">
                     <a href="/" className="text-black text-xl font-bold">
                         <img className='w-[100px] md:w-[150px]' src={logo} alt="" />
@@ -74,16 +74,16 @@ const Navbar = () => {
                             </div>}
                     </div>
                     <ul className="hidden md:flex space-x-4 text-[14px]">
-                        <Link to="/" className="text-black hover:text-black">
+                        <Link to="/" className="text-white hover:text-gray-400">
                             Home
                         </Link>
-                        <Link to="/shop/all-products" className="text-gray-500 hover:text-black">
+                        <Link to="/shop/all-products" className="text-gray-400 hover:text-white">
                             Shop
                         </Link>
-                        <Link to="/" className="text-gray-500 hover:text-black">
+                        <Link to="/" className="text-gray-400 hover:text-white">
                             Featured
                         </Link>
-                        <Link to="/" className="text-gray-500 hover:text-black">
+                        <Link to="/" className="text-gray-400 hover:text-white">
                             Recommended
                         </Link>
                     </ul>
@@ -112,7 +112,7 @@ const Navbar = () => {
                             <Link to={`/orders/${user._id}`} className="">{user.fullName}</Link>
                             <FaUserCircle size={24} />
                         </div> : <>
-                            <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2 border border-black">
+                            <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2 border border-white">
                                 Sign Up
                             </Link>
                             <Link to='/accounts/login' className="bg-white text-black border border-black px-4 py-2">
