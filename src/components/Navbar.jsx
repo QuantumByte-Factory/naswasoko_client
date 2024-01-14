@@ -104,7 +104,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="hidden md:flex items-center space-x-4 ">
-                    <Link className='flex items-center' to='/cart'>
+                    <Link className='flex items-center text-white' to='/cart'>
                         <BsCart3 size={24} /> ({cartItems?.length})
                     </Link>
                     {user ?
