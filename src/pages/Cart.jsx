@@ -3,9 +3,6 @@ import { useCart } from '../CartContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
-// const { Client, MessageMedia } = require('whatsapp-web.js');
-// const qrcode = require('qrcode-terminal');
-// const { useCart } = require('../CartContext');
 
 const Cart = () => {
     const { cartItems, removeFromCart, decreaseQuantity, increaseQuantity } = useCart();
@@ -28,40 +25,24 @@ const Cart = () => {
         return total + item.price * item.quantity;
     }, 0);
 
-    const handleWhatsAppCheckout = async () => {
-        // const { cartItems } = useCart();
+    const handleWhatsAppCheckout = () => {
+    const formattedProducts = cartItems.map(item => `${item.title} (${item.quantity})`).join(', ');
 
-        // const client = new Client();
+    // Get today's date
+    const today = new Date();
+    const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
 
-        // client.on('qr', (qrCode) => {
-        //     // Display the QR code and ask the user to scan it with their WhatsApp
-        //     qrcode.generate(qrCode, { small: true });
-        // });
+    const message = `Hello naswasoko, I would like you to deliver the following products: ${formattedProducts} on ${formattedDate}. Thank you`;
 
-        // client.on('ready', async () => {
-        //     try {
-        //         // Replace with the actual store owner's phone number
-        //         const storeOwnerPhoneNumber = 'store_owner_phone_number';
+    // Replace with the actual WhatsApp phone number
+    const phoneNumber = '+254113794219';
 
-        //         // Create a message body with the items in the cart
-        //         const messageBody = `New order! Items:\n${cartItems.map(item => `${item.title} - ${item.quantity}`).join('\n')}`;
+    // Create a WhatsApp link with the message
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-        //         // Send a WhatsApp message to the store owner
-        //         await client.sendMessage(`whatsapp:${storeOwnerPhoneNumber}@c.us`, messageBody);
-
-        //         // Log success
-        //         console.log('WhatsApp message sent successfully.');
-
-        //         // Disconnect the client after sending the message
-        //         client.destroy();
-        //     } catch (error) {
-        //         // Log and handle errors
-        //         console.error('Error sending WhatsApp message:', error);
-        //     }
-        // });
-
-        // client.initialize();
-    };
+    // Open the link in a new tab
+    window.open(whatsappLink, '_blank');
+};
 
     // HAALFS2J23P26EMM9CKLMUQR
 
