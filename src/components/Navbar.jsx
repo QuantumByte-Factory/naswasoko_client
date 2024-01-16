@@ -31,7 +31,7 @@ const Navbar = () => {
                     <p className='text-gray-500 hidden md:flex font-light hover:text-black cursor-pointer'>Help & support</p>
                 </div>
             </nav>
-            <nav className="bg-black w-full px-[5%] border-b py-4 flex items-center justify-between">
+            <nav className="bg-[#2D303B] w-full px-[5%] border-b py-4 flex items-center justify-between">
                 <div className="flex items-center w-full md:w-fit justify-between md:justify-center space-x-4 relative">
                     <a href="/" className="text-black text-xl font-bold">
                         <img className='w-[100px] md:w-[150px]' src={logo} alt="" />
@@ -108,7 +108,7 @@ const Navbar = () => {
                         <BsCart3 size={24} /> ({cartItems?.length})
                     </Link>
                     {user ?
-                        <div className='flex items-center gap-2'>
+                        <div className='flex items-center text-gray-300 gap-2'>
                             <Link to={`/orders/${user._id}`} className="">{user.fullName}</Link>
                             <FaUserCircle size={24} />
                         </div> : <>
