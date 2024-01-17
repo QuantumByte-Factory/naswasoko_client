@@ -34,7 +34,7 @@ const Navbar = () => {
             <nav className="bg-[#2D303B] w-full px-[5%] border-b py-4 flex items-center justify-between">
                 <div className="flex items-center w-full md:w-fit justify-between md:justify-center space-x-4 relative">
                     <a href="/" className="text-black text-xl font-bold">
-                        <img className='w-[100px] md:w-[150px]' src={logo} alt="" />
+                        <img className='w-[100px] md:w-[170px]' src={logo} alt="" />
                     </a>
                     <div className="flex md:hidden">
                         <div className="flex text-white items-center gap-2">

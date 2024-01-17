@@ -1,12 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import hisense from '../assets/Hisense.png';
+import hisense from '../assets/Hisense Logo.jpeg';
 import jbl from '../assets/JBL.png';
-import mika from '../assets/Mika.webp';
-import ramtons from '../assets/ramtons.jpg';
-import samsung from '../assets/Samsung.png';
-import tcl from '../assets/tcl.jpg';
+import ramtons from '../assets/Ramtons Logo.png';
+import samsung from '../assets/Samsung Logo.jpeg';
+import tcl from '../assets/TCL Logo.jpeg';
+import von from '../assets/Von Logo 2.png';
+import roch from '../assets/Roch Logo.png';
+import haier from '../assets/Haier Logo.jpeg';
+import lg from '../assets/LG Logo.jpeg'
+
+const brands = [
+    { name: 'TCL', image: tcl },
+    { name: 'Hisense', image: hisense },
+    { name: 'Samsung', image: samsung },
+    { name: 'JBL', image: jbl },
+    { name: 'Ramtons', image: ramtons },
+    { name: 'Von', image: von },
+    { name: 'Roch', image: roch },
+    { name: 'Haier', image: haier },
+    { name: 'Lg', image: lg },
+];
 
 const categories = ['Computing', 'Electronics', 'Home Appliances', 'Kitchen Appliances', 'Waching machine', 'Blender'];
 
@@ -30,12 +45,15 @@ const CatsHome = () => {
             <div className="bg-[#222222] flex flex-col py-[2%] px-[5%] text-white ">
                 <p className='text-gray-100 font-medium text-[28px] mb-2'>Brands You Know</p>
                 <div className="flex w-full overflow-x-auto gap-[2%]">
-                    <img className='w-[150px] my-auto h-[50px]' src={tcl} alt="" />
-                    <img className='w-[100px]' src={hisense} alt="" />
-                    <img className='w-[130px]' src={samsung} alt="" />
-                    <img className='w-[100px]' src={jbl} alt="" />
-                    <img className='w-[150px] text-white bg-white' src={mika} alt="" />
-                    <img className='w-[150px] h-[50px] my-auto' src={ramtons} alt="" />
+                    {brands.map((brand, index) => (
+                        <Link
+                            to={`/search?query=${brand.name}`}
+                            key={index}
+                            className="w-[150px] my-auto h-[50px]"
+                        >
+                            <img className='w-full h-full' src={brand.image} alt={brand.name} />
+                        </Link>
+                    ))}
                 </div>
             </div>
             <div className="w-full flex flex-col md:flex-row py-[5%] px-[5%] gap-[2%] ">

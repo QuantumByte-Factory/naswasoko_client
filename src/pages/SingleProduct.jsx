@@ -113,7 +113,7 @@ const SingleProduct = () => {
                                         Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' />
                                     </button>
                                 <p className="text-gray-600 font-light text-[14px]">
-                                    <span className="font-medium">{product.quantity}</span> Items left in stock
+                                    <span className="font-medium">{product.quantity}</span> Items in stock
                                 </p>
                             </div>
                         </div>

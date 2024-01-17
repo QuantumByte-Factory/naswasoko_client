@@ -140,7 +140,7 @@ const Section = () => {
             <div className="flex mb-6 gap-[2%]">
                 <button onClick={handleNavigate} className="hidden md:flex w-[250px] pb-4 justify-end bg flex-col gap-[2%] border shadow-md">
                     <p className='text-white text-[26px] font-medium px-4 '>Electronics</p>
-                    <button className="bg-gray-100 bg-opacity-70 text-gray-800 mx-4 py-1.5 font-medium">View All</button>
+                    <button className="bg-gray-100 bg-opacity-70 px-[8px] text-gray-800 mx-4 py-1.5 font-medium">View All</button>
                 </button>
                 <div  className="flex flex-col w-full md:flex-row gap-[2%]">
                     {loading
