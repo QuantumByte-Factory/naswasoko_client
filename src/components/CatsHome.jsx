@@ -1,51 +1,32 @@
-import React from 'react'
-import hisense from '../assets/Hisense.png'
-import jbl from '../assets/JBL.png'
-import mika from '../assets/Mika.webp'
-import ramtons from '../assets/ramtons.jpg'
-import samsung from '../assets/Samsung.png'
-import tcl from '../assets/tcl.jpg'
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import hisense from '../assets/Hisense.png';
+import jbl from '../assets/JBL.png';
+import mika from '../assets/Mika.webp';
+import ramtons from '../assets/ramtons.jpg';
+import samsung from '../assets/Samsung.png';
+import tcl from '../assets/tcl.jpg';
+
+const categories = ['Computing', 'Electronics', 'Home Appliances', 'Kitchen Appliances', 'Waching machine', 'Blender'];
 
 const CatsHome = () => {
     return (
         <>
             <div className="w-full px-[5%] flex flex-col justify-center gap-[2%] bg-gray-100 py-[5%] ">
-                <p className="text-gray-900 font-medium text-[28px] pb-4 ">
-                    More Categories to choose from From
-                </p>
-                <div className="flex flex-col md:flex-row gap-[2%] ">
-                    <div className="bg p-2 w-full flex rounded-md shadow-md h-[150px]">
-                        <p className='text-center text-gray-100 m-auto text-[26px] font-medium '>
-                            Computing
-                        </p>
-                    </div>
-                    <div className="bg2 p-2 w-full flex rounded-md shadow-md h-[150px]">
-                        <p className='text-center text-gray-100 m-auto text-[26px] font-medium '>
-                            Computing
-                        </p>
-                    </div>
-                    <div className="bg p-2 w-full flex rounded-md shadow-md h-[150px]">
-                        <p className='text-center text-gray-100 m-auto text-[26px] font-medium '>
-                            Computing
-                        </p>
-                    </div>
-                    <div className="bg2 p-2 w-full flex rounded-md shadow-md h-[150px]">
-                        <p className='text-center text-gray-100 m-auto text-[26px] font-medium '>
-                            Computing
-                        </p>
-                    </div>
-                    <div className="bg p-2 w-full flex rounded-md shadow-md h-[150px]">
-                        <p className='text-center text-gray-100 m-auto text-[26px] font-medium '>
-                            Computing
-                        </p>
-                    </div>
-                    <div className="bg2 p-2 w-full flex rounded-md shadow-md h-[150px]">
-                        <p className='text-center text-gray-100 m-auto text-[26px] font-medium '>
-                            Computing
-                        </p>
-                    </div>
-                </div>
+            <p className="text-gray-900 font-medium text-[28px] pb-4 ">More Categories to choose from From</p>
+            <div className="flex flex-col md:flex-row gap-[2%] ">
+                {categories.map((category, index) => (
+                    <Link
+                        to={`/search?query=${category}`}
+                        key={index}
+                        className={`bg-white p-2 w-full flex rounded-md shadow-md h-[150px] `}
+                    >
+                        <p className='text-center text-gray-700 m-auto text-[26px] font-medium '>{category}</p>
+                    </Link>
+                ))}
             </div>
+        </div >
             <div className="bg-[#222222] flex flex-col py-[2%] px-[5%] text-white ">
                 <p className='text-gray-100 font-medium text-[28px] mb-2'>Brands You Know</p>
                 <div className="flex w-full overflow-x-auto gap-[2%]">

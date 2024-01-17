@@ -10,6 +10,7 @@ import Checkout from './pages/Checkout';
 import MyOrders from './pages/MyOrders';
 import SellerLogin from './pages/SellerLogin';
 import SellerRegister from './pages/SellerRegister';
+import ImageUpload from './components/ImageUpload';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
       <Route path='/cart' element={<Cart />} />
       <Route path='/checkout' element={<Checkout />} /> 
       <Route path='/orders/:id' element={<MyOrders />} />
+
+      <Route path='/test' element={<ImageUpload />} />
 
     </Routes>
   );
