@@ -25,14 +25,6 @@ const Hero = () => {
 
   }, [bannerImages.length]);
 
-  const prevSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide - 1 + bannerImages.length) % bannerImages.length);
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide + 1) % bannerImages.length);
-  };
-
   return (
     <div className="relative overflow-hidden bg-white">
       <div className="w-full h-full overflow-hidden">
@@ -52,8 +44,6 @@ const Hero = () => {
           </Link>
         ))}
       </div>
-      <button className="prev" onClick={prevSlide}>&#10094;</button>
-      <button className="next" onClick={nextSlide}>&#10095;</button>
     </div>
   );
 };
