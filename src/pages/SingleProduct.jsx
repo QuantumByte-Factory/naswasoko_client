@@ -5,7 +5,6 @@ import { FaAngleLeft } from 'react-icons/fa';
 import { FaCartArrowDown } from 'react-icons/fa6';
 import { useParams } from 'react-router-dom';
 import Loading from '../elements/Loading';
-import ReactHtmlParser from 'react-html-parser';
 import { useCart } from '../CartContext';
 import ImageMagnifier from '../elements/ImageMagnifier';
 
