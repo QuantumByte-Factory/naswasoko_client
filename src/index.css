@@ -9,3 +9,11 @@
 .bg2 {
   background-image: url('../src/assets/logo.png');
 }
+
+/* Add this CSS to handle the zoom effect */
+.zoomed {
+  transform: scale(1.2);
+  /* Adjust the scale factor as needed for the desired zoom level */
+  transition: transform 0.3s ease;
+  /* Adjust the transition duration as needed */
+}

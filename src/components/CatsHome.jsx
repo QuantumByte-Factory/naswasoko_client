@@ -42,14 +42,14 @@ const CatsHome = () => {
                 ))}
             </div>
         </div >
-            <div className="bg-[#222222] flex flex-col py-[2%] px-[5%] text-white ">
-                <p className='text-gray-100 font-medium text-[28px] mb-2'>Brands You Know</p>
+            <div className="bg-white flex flex-col py-[2%] px-[5%] text-black ">
+                <p className='text-black font-medium text-[28px] mb-2'>Brands You Know</p>
                 <div className="flex w-full overflow-x-auto gap-[2%]">
                     {brands.map((brand, index) => (
                         <Link
                             to={`/search?query=${brand.name}`}
                             key={index}
-                            className="w-[150px] my-auto h-[50px]"
+                            className="w-[150px] my-auto"
                         >
                             <img className='w-full h-full' src={brand.image} alt={brand.name} />
                         </Link>
