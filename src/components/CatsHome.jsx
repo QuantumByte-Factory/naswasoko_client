@@ -23,7 +23,7 @@ const brands = [
     { name: 'Lg', image: lg },
 ];
 
-const categories = ['Computing', 'Electronics', 'Home Appliances', 'Kitchen Appliances', 'Waching machine', 'Blender'];
+const categories = ['Computing', 'Electronics', 'Home Appliances', 'Kitchen Appliances', 'Washing machine', 'Blenders'];
 
 const CatsHome = () => {
     return (
