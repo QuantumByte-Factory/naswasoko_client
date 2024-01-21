@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { FaAngleLeft, FaAngleRight, FaFacebookF, FaInstagram, FaRegHeart, FaWhatsapp } from 'react-icons/fa';
 import { FaCartArrowDown, FaXTwitter } from 'react-icons/fa6';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { MdOutlineVerified } from "react-icons/md";
 import Loading from '../elements/Loading';
 import { useCart } from '../CartContext';
@@ -16,11 +16,14 @@ const SingleProduct = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+    const navigate = useNavigate();
+
     const { id } = useParams();
     const { addToCart, cartItems } = useCart();
 
     const handleAddToCart = () => {
         addToCart(product);
+        navigate('/cart')
     };
 
     useEffect(() => {
@@ -62,7 +65,7 @@ const SingleProduct = () => {
     }
 
     const handlePrevImage = () => {
-        const prevIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
+        const prevIndex = (currentImageIndex - 1 + product.images.length) 
         setSelectedImage(product.images[prevIndex]);
         setCurrentImageIndex(prevIndex);
     };
@@ -78,10 +81,10 @@ const SingleProduct = () => {
                 <Navbar />
                 <div className="flex px-[5%] flex-col py-[2%]">
                     <div className="flex flex-col gap-2 items-start ">
-                        <button onClick={() => { }} className="flex items-center gap-2">
-                            <FaAngleLeft />
-                            <span>Go back</span>
-                        </button>
+                    <button onClick={() => navigate(-1)} className="flex items-center gap-2">
+                        <FaAngleLeft />
+                        <span>Go back</span>
+                    </button>
                         {loading ? (
                             <Loading />
                         ) : (
@@ -175,7 +178,7 @@ const SingleProduct = () => {
                                             {product?.brand?.title}
                                         </span>
                                     </p>
-                                    <div dangerouslySetInnerHTML={{ __html: product.description }} />
+                                    <div className="product-description" dangerouslySetInnerHTML={{ __html: product.description }} />
                                 </div>
                             </div>
                         )}
