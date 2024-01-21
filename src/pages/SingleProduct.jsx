@@ -8,6 +8,7 @@ import { MdOutlineVerified } from "react-icons/md";
 import Loading from '../elements/Loading';
 import { useCart } from '../CartContext';
 import ImageMagnifier from '../elements/ImageMagnifier';
+import { IoMdClose } from 'react-icons/io';
 
 const SingleProduct = () => {
     const [product, setProduct] = useState({});
@@ -36,6 +37,7 @@ const SingleProduct = () => {
                     setProduct(data);
                     if (data.images && data.images.length > 0) {
                         setSelectedImage(data.images[0]);
+                        setCurrentImageIndex(0);
                     }
                 } else {
                     console.error('Failed to fetch product');
@@ -65,15 +67,21 @@ const SingleProduct = () => {
     }
 
     const handlePrevImage = () => {
-        const prevIndex = (currentImageIndex - 1 + product.images.length) 
-        setSelectedImage(product.images[prevIndex]);
-        setCurrentImageIndex(prevIndex);
+        if (product.images && product.images.length > 0) {
+            const currentIndex = product.images.indexOf(selectedImage);
+            const prevIndex = (currentIndex - 1 + product.images.length) % product.images.length;
+            const newImage = product.images[prevIndex];
+            setSelectedImage(newImage);
+        }
     };
 
     const handleNextImage = () => {
-        const nextIndex = (currentImageIndex + 1) % product.images.length;
-        setSelectedImage(product.images[nextIndex]);
-        setCurrentImageIndex(nextIndex);
+        if (product.images && product.images.length > 0) {
+            const currentIndex = product.images.indexOf(selectedImage);
+            const nextIndex = (currentIndex + 1) % product.images.length;
+            const newImage = product.images[nextIndex];
+            setSelectedImage(newImage);
+        }
     };
 
     return (
@@ -186,28 +194,26 @@ const SingleProduct = () => {
                 </div>
                 <Footer />
             {isModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center w-full bg-black bg-opacity-50">
+                <div className="fixed inset-0 z-50 flex items-center justify-center w-full bg-black bg-opacity-60">
                     <div className="modal relative bg-white p-4 w-1/3">
-                        <button className="absolute top-4 right-4 text-white" onClick={closeModal}>
-                            Close
+                        <button className="absolute top-2 right-2 bg-gray-200 text-black p-2 rounded-full" onClick={closeModal}>
+                            <IoMdClose />
                         </button>
-                        <div className="flex items-center justify-center">
-                            <img src={selectedImage} alt="Product" className="" />
-                        </div>
-                        <div className="flex justify-between mt-4">
+                        <div className="w-full flex justify-between items-center gap-4">
                             <button
-                                className="text-white bg-gray-800 px-4 py-2 rounded"
+                                className="bg-gray-200 flex items-center justify-center p-2 rounded-full"
                                 onClick={handlePrevImage}
                             >
-                                <FaAngleLeft className="mr-2" />
-                                Prev
+                                <FaAngleLeft className="" size={24} />
                             </button>
+                            <div className="flex items-center justify-center">
+                                <img src={selectedImage} alt="Product" className="" />
+                            </div>
                             <button
-                                className="text-white bg-gray-800 px-4 py-2 rounded"
+                                className="bg-gray-200 flex items-center justify-center p-2 rounded-full"
                                 onClick={handleNextImage}
                             >
-                                Next
-                                <FaAngleRight className="ml-2" />
+                                <FaAngleRight className="" size={24} />
                             </button>
                         </div>
                     </div>
