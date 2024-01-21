@@ -157,9 +157,6 @@ const Products = () => {
                 <div className="w-full md:w-[89%] px-0 md:px-4">
                     <div className="w-full flex justify-between">
                         <p className='capitalize font-medium text-[16px] md:text-[24px] '>all products</p>
-                        <div className="flex capitalize font-light items-center text-[14px] md:text-[18px]">
-                            displaying <span className='font-medium px-2'>{products?.length}</span> items <FaChevronDown className='ml-2' />
-                        </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
                         {products.map((product) => (

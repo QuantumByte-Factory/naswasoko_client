@@ -88,7 +88,7 @@ const SingleProduct = () => {
                         {loading ? (
                             <Loading />
                         ) : (
-                            <div className="">
+                            <div className="w-full">
                                 <div className="border p-4 flex flex-col md:flex-row w-full md:w-2/3">
                                     <div className="flex flex-col md:flex-row flex-wrap overflow-x-auto w-full md:w-1/2">
                                         <div className="flex md:flex-col justify-start md:justify-center md:mx-auto gap-2 mt-4">
@@ -170,7 +170,7 @@ const SingleProduct = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col w-full md:w-2/3 mt-[2%] p-[2%] bg-gray-100">
-                                    <p className="font-medium text-[18px]">
+                                    <p className="text-[18px]">
                                         Product Details
                                     </p>
                                     <p className="border-b">
