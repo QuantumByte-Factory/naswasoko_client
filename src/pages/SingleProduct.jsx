@@ -195,7 +195,7 @@ const SingleProduct = () => {
                 <Footer />
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center w-full bg-black bg-opacity-60">
-                    <div className="modal relative bg-white p-4 w-1/3">
+                    <div className="modal relative bg-white p-4 w-full md:w-1/3">
                         <button className="absolute top-2 right-2 bg-gray-200 text-black p-2 rounded-full" onClick={closeModal}>
                             <IoMdClose />
                         </button>
