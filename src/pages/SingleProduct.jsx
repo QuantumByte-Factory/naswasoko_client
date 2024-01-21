@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { FaAngleLeft, FaFacebookF, FaInstagram, FaRegHeart, FaWhatsapp } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight, FaFacebookF, FaInstagram, FaRegHeart, FaWhatsapp } from 'react-icons/fa';
 import { FaCartArrowDown, FaXTwitter } from 'react-icons/fa6';
 import { useParams } from 'react-router-dom';
 import { MdOutlineVerified } from "react-icons/md";
@@ -13,7 +13,8 @@ const SingleProduct = () => {
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(false);
     const [selectedImage, setSelectedImage] = useState('');
-    const [isImageHovered, setIsImageHovered] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const { id } = useParams();
     const { addToCart, cartItems } = useCart();
@@ -51,6 +52,27 @@ const SingleProduct = () => {
         setSelectedImage(image);
     };
 
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const openModal = (index) => {
+        setCurrentImageIndex(index);
+        setIsModalOpen(true);
+    }
+
+    const handlePrevImage = () => {
+        const prevIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
+        setSelectedImage(product.images[prevIndex]);
+        setCurrentImageIndex(prevIndex);
+    };
+
+    const handleNextImage = () => {
+        const nextIndex = (currentImageIndex + 1) % product.images.length;
+        setSelectedImage(product.images[nextIndex]);
+        setCurrentImageIndex(nextIndex);
+    };
+
     return (
             <div>
                 <Navbar />
@@ -79,7 +101,7 @@ const SingleProduct = () => {
                                                     />
                                                 ))}
                                         </div>
-                                        <div className="px-[5%] w-full md:w-2/3 mt-4 md:mt-0">
+                                        <div onClick={openModal} className="px-[5%] w-full md:w-2/3 mt-4 md:mt-0">
                                             <ImageMagnifier src={selectedImage} />
                                         </div>
                                     </div>
@@ -150,7 +172,7 @@ const SingleProduct = () => {
                                     </p>
                                     <p className="border-b">
                                         Brand: <span className='font-medium'>
-                                            {product.brand.title}
+                                            {product?.brand?.title}
                                         </span>
                                     </p>
                                     <div dangerouslySetInnerHTML={{ __html: product.description }} />
@@ -160,6 +182,35 @@ const SingleProduct = () => {
                     </div>
                 </div>
                 <Footer />
+            {isModalOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center w-full bg-black bg-opacity-50">
+                    <div className="modal relative bg-white p-4 w-1/3">
+                        <button className="absolute top-4 right-4 text-white" onClick={closeModal}>
+                            Close
+                        </button>
+                        <div className="flex items-center justify-center">
+                            <img src={selectedImage} alt="Product" className="" />
+                        </div>
+                        <div className="flex justify-between mt-4">
+                            <button
+                                className="text-white bg-gray-800 px-4 py-2 rounded"
+                                onClick={handlePrevImage}
+                            >
+                                <FaAngleLeft className="mr-2" />
+                                Prev
+                            </button>
+                            <button
+                                className="text-white bg-gray-800 px-4 py-2 rounded"
+                                onClick={handleNextImage}
+                            >
+                                Next
+                                <FaAngleRight className="ml-2" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             </div>
     );
 };

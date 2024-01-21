@@ -17,3 +17,27 @@
   transition: transform 0.3s ease;
   /* Adjust the transition duration as needed */
 }
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 80%;
+  max-height: 80%;
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-slider {
+  width: 100%;
+  max-height: 80vh;
+}
