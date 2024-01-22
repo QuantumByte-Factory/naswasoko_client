@@ -26,7 +26,6 @@ export const UserProvider = ({ children }) => {
                     setUser(response.data);
                 }
             } catch (error) {
-                // Handle errors or redirect to the login page
                 console.error('Error fetching user:', error.message);
             }
         };

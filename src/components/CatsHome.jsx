@@ -23,7 +23,7 @@ const brands = [
     { name: 'Lg', image: lg },
 ];
 
-const categories = ['Computing', 'Electronics', 'Home Appliances', 'Kitchen Appliances', 'Washing machine', 'Blenders'];
+const categories = ['Cookware', 'Electronics', 'Home Appliances', 'Kitchen Appliances', 'Washing machine', 'Blenders'];
 
 const CatsHome = () => {
     return (
@@ -35,9 +35,9 @@ const CatsHome = () => {
                     <Link
                         to={`/search?query=${category}`}
                         key={index}
-                        className={`bg-white p-2 w-full flex rounded-md shadow-md h-[150px] `}
+                        className={`bg-white p-2 w-full mb-2 flex rounded-md shadow-md h-[150px] `}
                     >
-                        <p className='text-center text-gray-700 m-auto text-[26px] font-medium '>{category}</p>
+                        <p className='text-center text-gray-900 m-auto text-[20px] font-medium '>{category}</p>
                     </Link>
                 ))}
             </div>
@@ -57,7 +57,7 @@ const CatsHome = () => {
                 </div>
             </div>
             <div className="w-full flex flex-col md:flex-row py-[5%] px-[5%] gap-[2%] ">
-                <div className="p-3 md:p-6 w-full flex flex-col bg-gray-200 gap-4">
+                <div className="p-3 md:p-6 w-full flex mb-2 flex-col bg-gray-200 gap-4">
                     <img className='w-[50px] bg-black p-2 rounded-full' src="https://sky.garden/assets/svg-icons/icon-service.svg" alt="" />
                     <p className="text-[24px] font-medium">
                         Customer service that cares
@@ -66,7 +66,7 @@ const CatsHome = () => {
                         We are based in Nairobi and are available on Phone and Chat 24/7.
                     </p>
                 </div>
-                <div className="p-3 md:p-6 w-full flex flex-col bg-black gap-4 text-white">
+                <div className="p-3 md:p-6 w-full mb-2 flex flex-col bg-black gap-4 text-white">
                     <img className='w-[50px] bg-black p-2 rounded-full' src="https://sky.garden/assets/svg-icons/icon-new-truck.svg" alt="" />
                     <p className="text-[24px] font-medium">
                         Same day delivery
@@ -75,7 +75,7 @@ const CatsHome = () => {
                         Order before noon and let us take care of the rest.
                     </p>
                 </div>
-                <div className="p-3 md:p-6 w-full flex flex-col bg-gray-200 gap-4">
+                <div className="p-3 md:p-6 w-full mb-2 flex flex-col bg-gray-200 gap-4">
                     <img className='w-[50px] bg-black p-2 rounded-full' src="https://sky.garden/assets/svg-icons/icon-shop.svg" alt="" />
                     <p className="text-[24px] font-medium">
                         Opportunities for Small Shops
