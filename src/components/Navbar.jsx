@@ -23,7 +23,7 @@ const Navbar = () => {
         <>
             <nav className="bg-white py-3 px-[5%] flex items-center w-full justify-between text-white text-[15px]">
                 <div className="flex gap-4 items-center ">
-                    <p className='text-gray-500 font-light hover:text-black cursor-pointer'>Track Order</p>
+                    <p className='text-gray-500 font-light hover:text-black cursor-pointer'>Call to order: <span className='text-black'>+254 729 776 804</span></p>
                     <p className='text-gray-500 hidden md:flex font-light hover:text-black cursor-pointer'>sales@naswasoko.co.ke</p>
                 </div>
                 <div className="flex gap-4 items-center ">
@@ -57,7 +57,7 @@ const Navbar = () => {
                                     Featured
                                 </Link>
                                 <Link to="/" className="text-black">
-                                    Recommended
+                                    Discounts
                                 </Link>
                                 {user ? <div className='flex items-center gap-2'>
                                     <Link to={`/orders/${user._id}`} className="">{user.fullName}</Link>
@@ -83,7 +83,7 @@ const Navbar = () => {
                             Featured
                         </Link>
                         <Link to="/" className="text-gray-400 hover:text-white">
-                            Recommended
+                            Discounts   
                         </Link>
                     </ul>
                 </div>
@@ -111,10 +111,10 @@ const Navbar = () => {
                             <Link to={`/orders/${user._id}`} className="">{user.fullName}</Link>
                             <FaUserCircle size={24} />
                         </div> : <>
-                            <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2 border border-white">
+                            <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2">
                                 Sign Up
                             </Link>
-                            <Link to='/accounts/login' className="bg-white text-black border border-black px-4 py-2">
+                            <Link to='/accounts/login' className="bg-white text-black px-4 py-2">
                                 Login
                             </Link>
                         </>}
