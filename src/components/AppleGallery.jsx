@@ -23,7 +23,7 @@ const AppleGallery = () => {
                         </div>
                     ))}
                 </div>
-                <Link to="/" className="mt-8 block text-blue-500 hover:underline">
+                <Link to="/" className="mt-8 block bg-black text-white w-fit px-5 py-1.5 hover:underline">
                     Back to Home
                 </Link>
             </div>
