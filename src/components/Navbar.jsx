@@ -88,7 +88,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <form onSubmit={handleSearch} className="justify-between items-center hidden md:flex px-4 bg-gray-100  md:w-[40%] text-black rounded-full border">
+                <form onSubmit={(e) => { e.preventDefault(); setSearchQuery(''); }} className="justify-between items-center hidden md:flex px-4 bg-gray-100  md:w-[40%] text-black rounded-full border">
                     <input
                         type="text"
                         value={searchQuery}
