@@ -11,6 +11,7 @@ import MyOrders from './pages/MyOrders';
 import SellerLogin from './pages/SellerLogin';
 import SellerRegister from './pages/SellerRegister';
 import ImageUpload from './components/ImageUpload';
+import AppleGallery from './components/AppleGallery';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route path='/orders/:id' element={<MyOrders />} />
 
       <Route path='/test' element={<ImageUpload />} />
+      <Route path='/apple-gallery' element={<AppleGallery />} />
 
     </Routes>
   );
