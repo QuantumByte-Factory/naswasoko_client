@@ -61,7 +61,6 @@ const Navbar = () => {
                                 </Link>
                                 {user ? <div className='flex items-center gap-2'>
                                     <Link to={`/orders/${user._id}`} className="">{user.fullName}</Link>
-                                    {/* <FaUserCircle size={24} /> */}
                                 </div> : <>
                                         <Link to='/accounts/sign-up' className="bg-gray-100 flex py-1 justify-center text-black">
                                             Sign Up
@@ -89,7 +88,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div className="justify-between items-center hidden md:flex px-4 bg-gray-100  md:w-[40%] text-black rounded-full border">
+                <form onSubmit={handleSearch} className="justify-between items-center hidden md:flex px-4 bg-gray-100  md:w-[40%] text-black rounded-full border">
                     <input
                         type="text"
                         value={searchQuery}
@@ -101,7 +100,7 @@ const Navbar = () => {
                     <button onClick={handleSearch} className="">
                         <MdOutlineSearch size={28} />
                     </button>
-                </div>
+                </form>
 
                 <div className="hidden md:flex items-center space-x-4 ">
                     <Link className='flex items-center text-white' to='/cart'>
