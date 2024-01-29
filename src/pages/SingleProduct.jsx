@@ -85,150 +85,149 @@ const SingleProduct = () => {
     };
 
     return (
-            <div>
-                <Navbar />
-                <div className="flex px-[5%] flex-col py-[2%]">
-                    <div className="flex flex-col gap-2 items-start ">
+        <div>
+            <Navbar />
+            <div className="flex px-[5%] flex-col py-[2%]">
+                <div className="flex flex-col gap-2 items-start ">
                     <button onClick={() => navigate(-1)} className="flex items-center gap-2">
                         <FaAngleLeft />
                         <span>Go back</span>
                     </button>
-                        {loading ? (
-                            <Loading />
-                        ) : (
-                            <div className="w-full flex gap-[2%]">
-                                <div className="flex flex-col w-full gap-[2%] md:w-2/3">
-                                    <div className="border p-4 flex flex-col md:flex-row w-full">
-                                        <div className="flex flex-col md:flex-row flex-wrap overflow-x-auto w-full md:w-1/2">
-                                            <div className="flex md:flex-col justify-start md:justify-center md:mx-auto gap-2 mt-4">
-                                                {product.images &&
-                                                    product.images.map((image, index) => (
-                                                        <img
-                                                            key={index}
-                                                            className={`w-20 h-20 object-cover ${selectedImage === image ? 'border-2 border-black' : 'opacity-70'
-                                                                }`}
-                                                            src={image}
-                                                            alt={`Product ${index}`}
-                                                            onClick={() => handleImageClick(image)}
-                                                        />
-                                                    ))}
-                                            </div>
-                                            <div onClick={openModal} className="px-[5%] w-full md:w-2/3 mt-4 md:mt-0">
-                                                <ImageMagnifier src={selectedImage} />
-                                            </div>
+                    {loading ? (
+                        <Loading />
+                    ) : (
+                        <div className="w-full flex gap-[2%]">
+                            <div className="flex flex-col w-full gap-[2%] md:w-2/3">
+                                <div className="border p-4 flex flex-col md:flex-row w-full">
+                                    <div className="flex flex-col md:flex-row flex-wrap overflow-x-auto w-full md:w-1/2">
+                                        <div className="flex md:flex-col justify-start md:justify-center md:mx-auto gap-2 mt-4">
+                                            {product.images &&
+                                                product.images.map((image, index) => (
+                                                    <img
+                                                        key={index}
+                                                        className={`w-20 h-20 object-cover ${selectedImage === image ? 'border-2 border-black' : 'opacity-70'
+                                                            }`}
+                                                        src={image}
+                                                        alt={`Product ${index}`}
+                                                        onClick={() => handleImageClick(image)}
+                                                    />
+                                                ))}
                                         </div>
-                                        <div className="flex flex-col w-full md:w-1/2">
-                                            <p className="text-gray-400 font-light text-[11px]">Category</p>
-                                            <p className="font-medium text-[24px] ">{product?.title}</p>
-                                            <div className="w-fit flex items-center gap-2 bg-green-100 p-2 ">
-                                                <MdOutlineVerified />
-                                                <span className="">In stock</span>
-                                            </div>
-                                            <div className="flex items-center my-2 gap-2">
-                                                <span>Quantity:</span>
-                                                <span className="bg-green-100 p-2">
-                                                    {product.quantity} items left
-                                                </span>
-                                            </div>
-                                            <p className="font-semibold text-[24px] my-2">
-                                                Ksh {product?.price?.toLocaleString('KES')}
-                                            </p>
-                                            <button onClick={handleAddToCart} className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2">
-                                                Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' />
+                                        <div onClick={openModal} className="px-[5%] w-full md:w-2/3 mt-4 md:mt-0">
+                                            <ImageMagnifier src={selectedImage} />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col w-full md:w-1/2">
+                                        <p className="text-gray-400 font-light text-[11px]">Category</p>
+                                        <p className="font-medium text-[24px] ">{product?.title}</p>
+                                        <div className="w-fit flex items-center gap-2 bg-green-100 p-2 ">
+                                            <MdOutlineVerified />
+                                            <span className="">In stock</span>
+                                        </div>
+                                        <div className="flex items-center my-2 gap-2">
+                                            <span>Quantity:</span>
+                                            <span className="bg-green-100 p-2">
+                                                {product.quantity} items left
+                                            </span>
+                                        </div>
+                                        <p className="font-semibold text-[24px] my-2">
+                                            Ksh {product?.price?.toLocaleString('KES')}
+                                        </p>
+                                        <button onClick={handleAddToCart} className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2">
+                                            Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' />
+                                        </button>
+                                        <div className="flex flex-col my-3.5">
+                                            <span className="font-medium text-[16px]">
+                                                Save this product for later
+                                            </span>
+                                            <button className='flex border border-gray-300 px-2 py-1.5 w-fit items-center gap-2'>
+                                                <FaRegHeart />
+                                                Favorite
                                             </button>
-                                            <div className="flex flex-col my-3.5">
-                                                <span className="font-medium text-[16px]">
-                                                    Save this product for later
-                                                </span>
-                                                <button className='flex border border-gray-300 px-2 py-1.5 w-fit items-center gap-2'>
-                                                    <FaRegHeart />
-                                                    Favorite
-                                                </button>
-                                            </div>
-                                            <div className="flex flex-col mb-2">
-                                                <p className="text-[16px] font-light">
-                                                    Share with friends and family
-                                                </p>
-                                                <div className="flex flex-wrap items-center w-fit gap-4">
-                                                    <div className="bg-gray-100 p-1 items-end flex gap-1">
-                                                        <FaFacebookF size={24} className='bg-blue-500 text-white p-1' />
-                                                        <span className="text-gray-400 font-light">
-                                                            share
-                                                        </span>
-                                                    </div>
-                                                    <div className="bg-gray-100 p-1 items-end flex gap-1">
-                                                        <FaWhatsapp size={24} className='bg-green-500 text-white p-1' />
-                                                        <span className="text-gray-400 font-light">
-                                                            share
-                                                        </span>
-                                                    </div>
-                                                    <div className="bg-gray-100 p-1 items-end flex gap-1">
-                                                        <FaInstagram size={24} className='bg-rose-200 text-black p-1' />
-                                                        <span className="text-gray-400 font-light">
-                                                            share
-                                                        </span>
-                                                    </div>
-                                                    <div className="bg-gray-100 p-1 items-end flex gap-1">
-                                                        <FaXTwitter size={24} className='bg-gray-200 text-black p-1' />
-                                                        <span className="text-gray-400 font-light">
-                                                            share
-                                                        </span>
-                                                    </div>
+                                        </div>
+                                        <div className="flex flex-col mb-2">
+                                            <p className="text-[16px] font-light">
+                                                Share with friends and family
+                                            </p>
+                                            <div className="flex flex-wrap items-center w-fit gap-4">
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1">
+                                                    <FaFacebookF size={24} className='bg-blue-500 text-white p-1' />
+                                                    <span className="text-gray-400 font-light">
+                                                        share
+                                                    </span>
+                                                </div>
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1">
+                                                    <FaWhatsapp size={24} className='bg-green-500 text-white p-1' />
+                                                    <span className="text-gray-400 font-light">
+                                                        share
+                                                    </span>
+                                                </div>
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1">
+                                                    <FaInstagram size={24} className='bg-rose-200 text-black p-1' />
+                                                    <span className="text-gray-400 font-light">
+                                                        share
+                                                    </span>
+                                                </div>
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1">
+                                                    <FaXTwitter size={24} className='bg-gray-200 text-black p-1' />
+                                                    <span className="text-gray-400 font-light">
+                                                        share
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex flex-col w-full mt-[2%] p-[2%] bg-gray-100">
-                                        <p className="text-[18px]">
-                                            Product Details
-                                        </p>
-                                        <p className="border-b">
-                                            Brand: <span className='font-medium'>
-                                                {product?.brand?.title}
-                                            </span>
-                                        </p>
-                                        <div className="product-description" dangerouslySetInnerHTML={{ __html: product.description }} />
-                                    </div>
                                 </div>
-                                <div className="hidden md:flex p-4 md:w-1/3 flex-col border ">
-                                    <p className='flex items-center gap-2 text-[24px] font-medium border-b'>
-                                        <FaLock /> 
-                                        Secure payment options
+                                <div className="flex flex-col w-full mt-[2%] p-[2%] bg-gray-100">
+                                    <p className="text-[18px]">
+                                        Product Details
                                     </p>
-                                    <p className="text-[15px] font-light py-2">
-                                        With Naswasoko you are able to pay and on the delivery, Naswasoko keeps your payment information secure and our shops never receive your credit card information. If paying online your credit won't be charged until you confirm that you received your order.
+                                    <p className="border-b">
+                                        Brand: <span className='font-medium'>
+                                            {product?.brand?.title}
+                                        </span>
                                     </p>
-                                    <p className="border-t border-b text-[16px] font-normal py-1">
-                                        Delivery within Nairobi CBD from as low as KSH 110
-                                    </p>
-                                    <div className="">
-                                        <p className="text-[20px] font-medium">
-                                            Delivery fee depending on the area
-                                        </p>
-                                        <ul class="list-disc pl-6">
-                                            <li class="mb-2">Nairobi - Ksh. 350</li>
-                                            <li class="mb-2">Naivasha, Eldoret, Nakuru - Ksh. 500</li>
-                                            <li class="mb-2">Malaba - Ksh. 750</li>
-                                        </ul>
-                                    </div>
-                                    <p className='flex items-center gap-2 text-gray-700 text-[15px]'>
-                                        <IoMdTime />
-                                        Delivery in Nairobi: Same day (if ordered before 4pm)
-                                    </p>
-                                    <p className='flex items-center gap-2 text-gray-700 text-[15px]'>
-                                        <IoMdTime />
-                                        Delivery outside Nairobi: 1 -2 business days
-                                    </p>
-                                    <p className='flex items-center gap-2 text-gray-700 text-[15px]'>
-                                        <FaArrowsRotate />
-                                        Returns: Accepted within 48 hrs(after delivery)
-                                    </p>
+                                    <div className="product-description" dangerouslySetInnerHTML={{ __html: product.description }} />
                                 </div>
                             </div>
-                        )}
-                    </div>
+                            <div className="hidden md:flex p-4 md:w-1/3 flex-col border ">
+                                <p className='flex items-center gap-2 text-[24px] font-medium border-b'>
+                                    <FaLock />
+                                    Secure payment options
+                                </p>
+                                <p className="text-[15px] font-light py-2">
+                                    With Naswasoko you are able to pay and on the delivery, Naswasoko keeps your payment information secure and our shops never receive your credit card information. If paying online your credit won't be charged until you confirm that you received your order.
+                                </p>
+                                <p className="border-t border-b text-[16px] font-normal py-1">
+                                    Delivery within Nairobi CBD from as low as KSH 110
+                                </p>
+                                <div className="">
+                                    <p className="text-[20px] font-medium">
+                                        Delivery fee depending on the area
+                                    </p>
+                                    <ul class="list-disc pl-6">
+                                        <li class="mb-2">Nairobi - Ksh. 500</li>
+                                        <li class="mb-2">Nairobi CBD - Ksh. 110</li>
+                                    </ul>
+                                </div>
+                                <p className='flex items-center gap-2 text-gray-700 text-[15px]'>
+                                    <IoMdTime />
+                                    Delivery in Nairobi: within 2hrs (From the time of order)
+                                </p>
+                                <p className='flex items-center gap-2 text-gray-700 text-[15px]'>
+                                    <IoMdTime />
+                                    Delivery outside Nairobi: 1 -2 business days
+                                </p>
+                                <p className='flex items-center gap-2 text-gray-700 text-[15px]'>
+                                    <FaArrowsRotate />
+                                    Returns: Accepted within 48 hrs(after delivery)
+                                </p>
+                            </div>
+                        </div>
+                    )}
                 </div>
-                <Footer />
+            </div>
+            <Footer />
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center w-full bg-black bg-opacity-60">
                     <div className="modal relative bg-white p-4 w-full md:w-1/3">
@@ -256,7 +255,7 @@ const SingleProduct = () => {
                 </div>
             )}
 
-            </div>
+        </div>
     );
 };
 
