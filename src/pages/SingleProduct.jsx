@@ -84,6 +84,42 @@ const SingleProduct = () => {
         }
     };
 
+    const handleOrderOnWhatsApp = () => {
+        const message = `Hello Naswasoko, I would like to order the following product:\n\n${product.title}\nPrice: Ksh ${product.price.toLocaleString('KES')}\n\nPlease provide further details.`;
+
+        // Replace '1234567890' with the actual WhatsApp number you want to message
+        const whatsappNumber = '+254729776804';
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+        window.open(whatsappLink, '_blank');
+    };
+
+    const shareOnFacebook = () => {
+        const shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+        window.open(shareLink, '_blank');
+    };
+
+    // Function to share the product on WhatsApp
+    const shareOnWhatsApp = () => {
+        const shareText = `Check out this product: ${product.title}\nPrice: Ksh ${product.price.toLocaleString('KES')}\n${window.location.href}`;
+        const whatsappLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+        window.open(whatsappLink, '_blank');
+    };
+
+    // Function to share the product on Instagram
+    const shareOnInstagram = () => {
+        // Implement your Instagram sharing logic here (Instagram doesn't provide direct sharing via URL)
+        // This could include redirecting the user to your Instagram page or launching the Instagram app if installed
+        alert('Instagram sharing is not supported directly. You can manually share by visiting your Instagram account.');
+    };
+
+    // Function to share the product on Twitter
+    const shareOnTwitter = () => {
+        const shareText = `Check out this awesome product: ${product.title}! #Product #Shopping ${window.location.href}`;
+        const twitterLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+        window.open(twitterLink, '_blank');
+    };
+
     return (
         <div>
             <Navbar />
@@ -137,10 +173,16 @@ const SingleProduct = () => {
                                             Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' />
                                         </button>
                                         <div className="flex w-full gap-[2%] items-center">
-                                            <button className="flex justify-center items-center text-white font-medium gap-2 bg-green-500 w-full py-1.5">
+                                            <button
+                                                className="flex justify-center items-center text-white font-medium gap-2 bg-green-500 w-full py-1.5"
+                                                onClick={handleOrderOnWhatsApp}
+                                            >
                                                 <FaWhatsapp /> Order
                                             </button>
-                                            <button className="flex items-center justify-center gap-2 bg-yellow-200 py-1.5  w-full">
+                                            <button
+                                                className="flex items-center justify-center gap-2 bg-yellow-200 py-1.5  w-full"
+                                                onClick={handleAddToCart}
+                                            >
                                                 Buy (pay on delivery)
                                             </button>
                                         </div>
@@ -158,25 +200,25 @@ const SingleProduct = () => {
                                                 Share with friends and family
                                             </p>
                                             <div className="flex flex-wrap items-center w-fit gap-4">
-                                                <div className="bg-gray-100 p-1 items-end flex gap-1">
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1" onClick={shareOnFacebook}>
                                                     <FaFacebookF size={24} className='bg-blue-500 text-white p-1' />
                                                     <span className="text-gray-400 font-light">
                                                         share
                                                     </span>
                                                 </div>
-                                                <div className="bg-gray-100 p-1 items-end flex gap-1">
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1" onClick={shareOnWhatsApp}>
                                                     <FaWhatsapp size={24} className='bg-green-500 text-white p-1' />
                                                     <span className="text-gray-400 font-light">
                                                         share
                                                     </span>
                                                 </div>
-                                                <div className="bg-gray-100 p-1 items-end flex gap-1">
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1" onClick={shareOnInstagram}>
                                                     <FaInstagram size={24} className='bg-rose-200 text-black p-1' />
                                                     <span className="text-gray-400 font-light">
                                                         share
                                                     </span>
                                                 </div>
-                                                <div className="bg-gray-100 p-1 items-end flex gap-1">
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1" onClick={shareOnTwitter}>
                                                     <FaXTwitter size={24} className='bg-gray-200 text-black p-1' />
                                                     <span className="text-gray-400 font-light">
                                                         share
