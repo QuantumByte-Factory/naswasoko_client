@@ -19,20 +19,23 @@ const SearchedProducts = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
 
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-    navigate(`/search?query=${category}`);
-  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10); // Adjust the number of items per page as needed
 
-  const handleBrandClick = (brand) => {
-    setSelectedBrand(brand);
-    navigate(`/search?query=${brand}`);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = searchResults.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
     const fetchSearchResults = async () => {
       try {
-        const response = await fetch(`https://naswa.onrender.com/api/products/search?query=${query}`);
+        const response = await fetch(
+          `https://naswa.onrender.com/api/products/search?query=${query}&page=${currentPage}&perPage=${itemsPerPage}`
+        );
         if (response.ok) {
           const data = await response.json();
           setSearchResults(data);
@@ -49,7 +52,17 @@ const SearchedProducts = () => {
     if (query) {
       fetchSearchResults();
     }
-  }, [query]);
+  }, [query, currentPage, itemsPerPage]);
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    navigate(`/search?query=${category}`);
+  };
+
+  const handleBrandClick = (brand) => {
+    setSelectedBrand(brand);
+    navigate(`/search?query=${brand}`);
+  };
 
   return (
     <div>
@@ -140,9 +153,9 @@ const SearchedProducts = () => {
           </aside>
         </div>
         <div className=''>
-          {searchResults.length > 0 ? (
+          {currentItems.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-              {searchResults.map((product) => (
+              {currentItems.map((product) => (
                 <Link to={`/products/${product._id}`} key={product.id} className="flex hover:border-gray-400 cursor-pointer w-full md:w-[250px] flex-col justify-between gap-[2%] border shadow-md">
                   <div className="flex flex-col">
                     <img className='w-full' src={product.images[0]} alt={product.name} />
@@ -163,6 +176,17 @@ const SearchedProducts = () => {
           ) : (
             <p>No products found. Please try again.</p>
           )}
+          <div className="flex justify-center mt-4">
+            {Array.from({ length: Math.ceil(searchResults.length / itemsPerPage) }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => paginate(index + 1)}
+                className={`mx-2 px-3 py-1 ${currentPage === index + 1 ? 'bg-black text-white' : 'bg-gray-200'}`}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
       <Footer />
