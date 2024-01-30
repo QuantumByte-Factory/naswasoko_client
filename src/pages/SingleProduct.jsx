@@ -150,6 +150,9 @@ const SingleProduct = () => {
                                     <div className="flex flex-col w-full md:w-1/2">
                                         <p className="text-gray-400 font-light text-[11px]">Category</p>
                                         <p className="font-medium text-[24px] ">{product?.title}</p>
+                                        <p className="mb-2 text-[13px] font-light text-gray-500">
+                                            comes in <span className="font-medium">{product.color?.title}</span>  color
+                                        </p>
                                         <div className="w-fit flex items-center gap-2 bg-green-100 p-2 ">
                                             <MdOutlineVerified />
                                             <span className="">In stock</span>
