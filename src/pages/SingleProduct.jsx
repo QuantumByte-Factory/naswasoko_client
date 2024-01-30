@@ -87,7 +87,6 @@ const SingleProduct = () => {
     const handleOrderOnWhatsApp = () => {
         const message = `Hello Naswasoko, I would like to order the following product:\n\n${product.title}\nPrice: Ksh ${product.price.toLocaleString('KES')}\n\nPlease provide further details.`;
 
-        // Replace '1234567890' with the actual WhatsApp number you want to message
         const whatsappNumber = '+254729776804';
         const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
@@ -99,21 +98,16 @@ const SingleProduct = () => {
         window.open(shareLink, '_blank');
     };
 
-    // Function to share the product on WhatsApp
     const shareOnWhatsApp = () => {
         const shareText = `Check out this product: ${product.title}\nPrice: Ksh ${product.price.toLocaleString('KES')}\n${window.location.href}`;
         const whatsappLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
         window.open(whatsappLink, '_blank');
     };
 
-    // Function to share the product on Instagram
     const shareOnInstagram = () => {
-        // Implement your Instagram sharing logic here (Instagram doesn't provide direct sharing via URL)
-        // This could include redirecting the user to your Instagram page or launching the Instagram app if installed
         alert('Instagram sharing is not supported directly. You can manually share by visiting your Instagram account.');
     };
 
-    // Function to share the product on Twitter
     const shareOnTwitter = () => {
         const shareText = `Check out this awesome product: ${product.title}! #Product #Shopping ${window.location.href}`;
         const twitterLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
