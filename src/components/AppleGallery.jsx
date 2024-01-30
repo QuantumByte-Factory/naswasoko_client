@@ -56,7 +56,7 @@ const AppleGallery = () => {
 
                 {activeTab === 'products' && (
                     <div>
-                        <div className="flex mb-4">
+                        <div className="flex w-full overflow-x-auto mb-4">
                             <button
                                 onClick={() => handleProductCategoryChange('all')}
                                 className={`mr-4 px-4 py-2 focus:outline-none ${productCategory === 'all' ? 'bg-black text-white' : 'bg-gray-200 text-gray-800'
@@ -90,7 +90,7 @@ const AppleGallery = () => {
                                 className={`mr-4 px-4 py-2 focus:outline-none ${productCategory === 'macmini' ? 'bg-black text-white' : 'bg-gray-200 text-gray-800'
                                     }`}
                             >
-                                Mac Mini
+                                MacMini
                             </button>
                             <button
                                 onClick={() => handleProductCategoryChange('ipad')}
