@@ -105,11 +105,11 @@ const SingleProduct = () => {
     };
 
     const shareOnInstagram = () => {
-        alert('Instagram sharing is not supported directly. You can manually share by visiting your Instagram account.');
+        alert('Instagram sharing is not supported directly.\nYou can manually share by visiting your Instagram account, and sharing this product link with friends and family.');
     };
 
     const shareOnTwitter = () => {
-        const shareText = `Check out this awesome product: ${product.title}! #Product #Shopping ${window.location.href}`;
+        const shareText = `Check out this awesome product: ${product.title}!\n#Product #Shopping #Naswasoko\n${window.location.href}`;
         const twitterLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
         window.open(twitterLink, '_blank');
     };
@@ -194,25 +194,25 @@ const SingleProduct = () => {
                                                 Share with friends and family
                                             </p>
                                             <div className="flex flex-wrap items-center w-fit gap-4">
-                                                <div className="bg-gray-100 p-1 items-end flex gap-1" onClick={shareOnFacebook}>
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1 cursor-pointer" onClick={shareOnFacebook}>
                                                     <FaFacebookF size={24} className='bg-blue-500 text-white p-1' />
                                                     <span className="text-gray-400 font-light">
                                                         share
                                                     </span>
                                                 </div>
-                                                <div className="bg-gray-100 p-1 items-end flex gap-1" onClick={shareOnWhatsApp}>
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1 cursor-pointer" onClick={shareOnWhatsApp}>
                                                     <FaWhatsapp size={24} className='bg-green-500 text-white p-1' />
                                                     <span className="text-gray-400 font-light">
                                                         share
                                                     </span>
                                                 </div>
-                                                <div className="bg-gray-100 p-1 items-end flex gap-1" onClick={shareOnInstagram}>
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1 cursor-pointer" onClick={shareOnInstagram}>
                                                     <FaInstagram size={24} className='bg-rose-200 text-black p-1' />
                                                     <span className="text-gray-400 font-light">
                                                         share
                                                     </span>
                                                 </div>
-                                                <div className="bg-gray-100 p-1 items-end flex gap-1" onClick={shareOnTwitter}>
+                                                <div className="bg-gray-100 p-1 items-end flex gap-1 cursor-pointer" onClick={shareOnTwitter}>
                                                     <FaXTwitter size={24} className='bg-gray-200 text-black p-1' />
                                                     <span className="text-gray-400 font-light">
                                                         share
