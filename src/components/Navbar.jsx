@@ -23,11 +23,11 @@ const Navbar = () => {
         <>
             <nav className="bg-white py-3 px-[5%] flex items-center w-full justify-between text-white text-[15px]">
                 <div className="flex gap-4 items-center ">
-                    <p className='text-gray-500 font-light hover:text-black cursor-pointer'>Call to order: <span className='text-black'>+254 729 776 804</span></p>
+                    <p className='text-gray-500 font-light hover:text-black cursor-pointer'>Order: <span className='text-black'>+254 729 776 804</span></p>
                     <p className='text-gray-500 hidden md:flex font-light hover:text-black cursor-pointer'>sales@naswasoko.co.ke</p>
                 </div>
                 <div className="flex gap-4 items-center ">
-                    <Link to={`/sell/login`} className='text-gray-500 font-light hover:text-black cursor-pointer'>Sell with Naswasoko</Link>
+                    <Link to={`/sell/login`} className='text-gray-500 font-light hover:text-black cursor-pointer'>Sell with us</Link>
                     <p className='text-gray-500 hidden md:flex font-light hover:text-black cursor-pointer'>Help & support</p>
                 </div>
             </nav>
