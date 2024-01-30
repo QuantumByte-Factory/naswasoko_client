@@ -136,6 +136,14 @@ const SingleProduct = () => {
                                         <button onClick={handleAddToCart} className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2">
                                             Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' />
                                         </button>
+                                        <div className="flex w-full gap-[2%] items-center">
+                                            <button className="flex justify-center items-center text-white font-medium gap-2 bg-green-500 w-full py-1.5">
+                                                <FaWhatsapp /> Order
+                                            </button>
+                                            <button className="flex items-center justify-center gap-2 bg-yellow-200 py-1.5  w-full">
+                                                Buy (pay on delivery)
+                                            </button>
+                                        </div>
                                         <div className="flex flex-col my-3.5">
                                             <span className="font-medium text-[16px]">
                                                 Save this product for later
