@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';import Navbar from '../components/Navbar';
+import React, { useState, useEffect, useRef } from 'react';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { FaCartArrowDown, FaRegHeart } from 'react-icons/fa6';
 import { IoMdShare } from "react-icons/io";
@@ -24,10 +25,20 @@ const Products = () => {
         const fetchProducts = async () => {
             setLoading(true);
             try {
+                const cacheKey = `productsPage${currentPage}`;
+                const cachedData = localStorage.getItem(cacheKey);
+
+                if (cachedData) {
+                    setProducts(prevProducts => [...prevProducts, ...JSON.parse(cachedData)]);
+                    setLoading(false);
+                    return;
+                }
+
                 const response = await fetch(`https://naswa.onrender.com/api/products?page=${currentPage}`);
                 if (response.ok) {
                     const data = await response.json();
-                    setProducts(prevProducts => [...prevProducts, ...data]); // Append fetched products to the existing ones
+                    setProducts(prevProducts => [...prevProducts, ...data]);
+                    localStorage.setItem(cacheKey, JSON.stringify(data));
                 } else {
                     console.error('Failed to fetch products');
                 }
