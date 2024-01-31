@@ -2,30 +2,40 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Section = () => {
-    const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchProducts = async () => {
+        const fetchProducts = async (url, stateSetter, cacheKey) => {
             try {
-                const response = await fetch('https://naswa.onrender.com/api/products/new');
-                if (response.ok) {
-                    const data = await response.json();
-                    setProducts(data);
+                const cachedData = localStorage.getItem(cacheKey);
+                if (cachedData) {
+                    stateSetter(JSON.parse(cachedData));
                     setLoading(false);
+                    return;
+                }
+
+                const response = await fetch(url);
+                if (response.ok) {
+                    const fetchedData = await response.json();
+                    stateSetter(fetchedData);
+                    setLoading(false);
+
+                    localStorage.setItem(cacheKey, JSON.stringify(fetchedData));
                 } else {
-                    console.error('Failed to fetch new products');
+                    console.error(`Failed to fetch products from ${url}`);
                 }
             } catch (error) {
-                console.error('Error fetching new products:', error);
+                console.error(`Error fetching products from ${url}:`, error);
             }
         };
 
-        fetchProducts();
-    }, []);
+        fetchProducts('https://naswa.onrender.com/api/products/new', setProducts, 'newProducts');
 
+        fetchProducts('https://naswa.onrender.com/api/products', setData, 'allProducts');
+    }, []);
     const handleNavigate = ()=> {
         navigate(`/search?query=electronics`);
     }

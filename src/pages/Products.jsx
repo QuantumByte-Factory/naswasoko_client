@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { FaCartArrowDown, FaChevronDown, FaRegHeart } from 'react-icons/fa6';
+import { FaCartArrowDown, FaRegHeart } from 'react-icons/fa6';
 import { IoMdShare } from "react-icons/io";
 import { MdVerified } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom';
@@ -38,7 +38,7 @@ const Products = () => {
         };
 
         fetchProducts();
-    }, [currentPage]); // Trigger the fetch when the currentPage changes
+    }, [currentPage]);
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
@@ -52,16 +52,13 @@ const Products = () => {
 
     const handleScroll = () => {
         if (loader.current && loader.current.getBoundingClientRect().bottom <= window.innerHeight) {
-            // Load more products when the user scrolls to the bottom
             setCurrentPage(prevPage => prevPage + 1);
         }
     };
 
     useEffect(() => {
-        // Add a scroll event listener to detect when the user scrolls
         window.addEventListener('scroll', handleScroll);
         return () => {
-            // Remove the event listener when the component is unmounted
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
