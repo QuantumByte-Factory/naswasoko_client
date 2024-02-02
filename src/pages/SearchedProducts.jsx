@@ -156,19 +156,28 @@ const SearchedProducts = () => {
           {currentItems.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
               {currentItems.map((product) => (
-                <Link to={`/products/${product._id}`} key={product.id} className="flex hover:border-gray-400 cursor-pointer w-full md:w-[250px] flex-col justify-between gap-[2%] border shadow-md">
-                  <div className="flex flex-col">
-                    <img className='w-full' src={product.images[0]} alt={product.name} />
-                    <div className="w-full flex p-2 justify-end gap-2">
-                      <MdVerified />
-                      <FaRegHeart />
-                      <IoMdShare />
-                    </div>
-                  </div>
+                <Link
+                  to={`/products/${product._id}`}
+                  key={product.id}
+                  className="flex hover:border-black cursor-pointer w-full md:w-[250px] h-[350px] flex-col gap-[2%] border shadow-md"
+                >
+                  <img
+                    className='w-fit h-[50%] mx-auto py-2'
+                    src={product?.images[0]}
+                    alt={product.title}
+                  />
                   <div className="p-4">
                     <p className="font-medium text-black text-[14px]">{product.title}</p>
-                    <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}</p>
-                    <button onClick={() => addToCart(product)} className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2">Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' /></button>
+                    <div className="w-full items-center flex justify-between">
+                      <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}.00</p>
+                      <p className="text-gray-400 font-light text-[13px]">{product?.brand?.title}</p>
+                    </div>
+                    <button
+                      onClick={() => addToCart(product)}
+                      className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2"
+                    >
+                      Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' />
+                    </button>
                   </div>
                 </Link>
               ))}

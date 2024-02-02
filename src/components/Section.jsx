@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FaCartArrowDown } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Section = () => {
@@ -36,7 +37,7 @@ const Section = () => {
 
         fetchProducts('https://naswa.onrender.com/api/products', setData, 'allProducts');
     }, []);
-    const handleNavigate = ()=> {
+    const handleNavigate = () => {
         navigate(`/search?query=electronics`);
     }
 
@@ -47,7 +48,7 @@ const Section = () => {
                 if (response.ok) {
                     const data = await response.json();
                     setData(data);
-                    setLoading(false); 
+                    setLoading(false);
                 } else {
                     console.error('Failed to fetch products');
                 }
@@ -89,19 +90,31 @@ const Section = () => {
                     : data.slice(2, 8).map((product) => (
                         <Link
                             to={`/products/${product._id}`}
-                            key={product._id}
-                            className="flex w-full md:w-[250px] flex-col justify-between gap-[2%] border shadow-md"
+                            key={product.id}
+                            className="flex hover:border-black cursor-pointer w-full md:w-[250px] justify-between h-[350px] flex-col gap-[2%] border shadow-md"
                         >
-                            <img className="w-full" src={product.images[0]} alt={product.title} />
+                            <img
+                                className='w-fit h-[50%] mx-auto py-2'
+                                src={product?.images[0]}
+                                alt={product.title}
+                            />
                             <div className="p-4">
                                 <p className="font-medium text-black text-[14px]">{product.title}</p>
-                                <p className="text-[16px] font-medium text-gray-700 py-2">{product.price.toLocaleString('KES')}</p>
-                                <button className="w-full py-2 bg-black text-white text-[14px] mb-2">Add to Cart</button>
+                                <div className="w-full items-center flex justify-between">
+                                    <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}.00</p>
+                                    <p className="text-gray-400 font-light text-[13px]">{product?.brand?.title}</p>
+                                </div>
+                                <button
+                                    onClick={() => addToCart(product)}
+                                    className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2"
+                                >
+                                    Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' />
+                                </button>
                             </div>
                         </Link>
                     ))}
             </div>
-            
+
 
             <div className="flex w-full items-center mb-2 justify-between mt-4">
                 <p className="text-[20px] font-medium text-black">Popular Right Now</p>
@@ -131,14 +144,26 @@ const Section = () => {
                     : data.slice(0, 6).map((product) => (
                         <Link
                             to={`/products/${product._id}`}
-                            key={product._id}
-                            className="flex w-full md:w-[250px] flex-col justify-between gap-[2%] border shadow-md"
+                            key={product.id}
+                            className="flex hover:border-black cursor-pointer w-full md:w-[250px] justify-between h-[350px] flex-col gap-[2%] border shadow-md"
                         >
-                            <img className="w-full" src={product.images[0]} alt={product.title} />
+                            <img
+                                className='w-fit h-[50%] mx-auto py-2'
+                                src={product?.images[0]}
+                                alt={product.title}
+                            />
                             <div className="p-4">
                                 <p className="font-medium text-black text-[14px]">{product.title}</p>
-                                <p className="text-[16px] font-medium text-gray-700 py-2">{product.price.toLocaleString('KES')}</p>
-                                <button className="w-full py-2 bg-black text-white text-[14px] mb-2">Add to Cart</button>
+                                <div className="w-full items-center flex justify-between">
+                                    <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}.00</p>
+                                    <p className="text-gray-400 font-light text-[13px]">{product?.brand?.title}</p>
+                                </div>
+                                <button
+                                    onClick={() => addToCart(product)}
+                                    className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2"
+                                >
+                                    Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' />
+                                </button>
                             </div>
                         </Link>
                     ))}
@@ -152,7 +177,7 @@ const Section = () => {
                     <p className='text-white text-[26px] font-medium px-4 '>Electronics</p>
                     <button className="bg-gray-100 bg-opacity-70 px-[8px] text-gray-800 mx-4 py-1.5 font-medium">View All</button>
                 </button>
-                <div  className="flex flex-col w-full md:flex-row gap-[2%]">
+                <div className="flex flex-col w-full md:flex-row gap-[2%]">
                     {loading
                         ? Array.from({ length: 5 }, (_, index) => (
                             <div role="status" className="space-y-8 animate-pulse md:space-y-0  rtl:space-x-reverse w-full flex flex-col md:items-center">
@@ -174,14 +199,26 @@ const Section = () => {
                         : products.slice(0, 5).map((product) => (
                             <Link
                                 to={`/products/${product._id}`}
-                                key={product._id}
-                                className="flex w-full md:w-[250px] flex-col justify-between gap-[2%] border shadow-md"
+                                key={product.id}
+                                className="flex hover:border-black cursor-pointer w-full md:w-[250px] justify-between h-[350px] flex-col gap-[2%] border shadow-md"
                             >
-                                <img className="w-full" src={product.image} alt={product.title} />
+                                <img
+                                    className='w-fit h-[50%] mx-auto py-2'
+                                    src={product?.image}
+                                    alt={product.title}
+                                />
                                 <div className="p-4">
                                     <p className="font-medium text-black text-[14px]">{product.title}</p>
-                                    <p className="text-[16px] font-medium text-gray-700 py-2">{product.price.toLocaleString('KES')}</p>
-                                    <button className="w-full py-2 bg-black text-white text-[14px] mb-2">Add to Cart</button>
+                                    <div className="w-full items-center flex justify-between">
+                                        <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}.00</p>
+                                        <p className="text-gray-400 font-light text-[13px]">{product?.brand?.title}</p>
+                                    </div>
+                                    <button
+                                        onClick={() => addToCart(product)}
+                                        className="w-full py-2 bg-black text-white text-[14px] flex items-center justify-center mb-2"
+                                    >
+                                        Add to Cart <span className="ml-2">|</span> <FaCartArrowDown className='ml-2' />
+                                    </button>
                                 </div>
                             </Link>
                         ))}
