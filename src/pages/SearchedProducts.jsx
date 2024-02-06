@@ -159,10 +159,10 @@ const SearchedProducts = () => {
                 <Link
                   to={`/products/${product._id}`}
                   key={product.id}
-                  className="flex hover:border-black cursor-pointer w-full md:w-[250px] h-[350px] flex-col gap-[2%] border shadow-md"
+                  className="flex hover:border-black cursor-pointer w-full md:w-[250px] h-auto md:h-[350px] flex-col gap-[2%] border shadow-md"
                 >
                   <img
-                    className='w-fit h-[50%] mx-auto py-2'
+                    className='w-fit h-full md:h-[50%] mx-auto py-2'
                     src={product?.images[0]}
                     alt={product.title}
                   />
