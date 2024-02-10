@@ -94,7 +94,7 @@ const Section = () => {
                             className="flex hover:border-black cursor-pointer w-full md:w-[250px] justify-between h-auto md:h-[350px] flex-col gap-[2%] border shadow-md"
                         >
                             <img
-                                className='w-[50%] h-[50%] mx-auto py-2'
+                                className='h-[200px] w-auto md:w-fit md:h-[50%] mx-auto py-2'
                                 src={product?.images[0]}
                                 alt={product.title}
                             />
@@ -148,7 +148,7 @@ const Section = () => {
                             className="flex hover:border-black cursor-pointer w-full md:w-[250px] justify-between h-auto md:h-[350px] flex-col gap-[2%] border shadow-md"
                         >
                             <img
-                                className='w-[50%] h-[50%] mx-auto py-2'
+                                className='h-[200px] w-auto md:w-fit md:h-[50%] mx-auto py-2'
                                 src={product?.images[0]}
                                 alt={product.title}
                             />
@@ -203,7 +203,7 @@ const Section = () => {
                                 className="flex hover:border-black cursor-pointer w-full md:w-[250px] justify-between h-auto md:h-[350px] flex-col gap-[2%] border shadow-md"
                             >
                                 <img
-                                    className='w-[50%] h-[50%] mx-auto py-2'
+                                    className='h-[200px] w-auto md:w-fit md:h-[50%] mx-auto py-2'
                                     src={product?.image}
                                     alt={product.title}
                                 />
