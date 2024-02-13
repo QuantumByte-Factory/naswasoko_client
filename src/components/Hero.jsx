@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import apple from '../assets/apple.jpeg'
 import tv from '../assets/tv.png'
 import home from '../assets/home.jpeg'
-import kitchen from '../assets/Edenberg.jpeg'
 
 import banner1 from '../assets/banner5.jpg';
 import banner2 from '../assets/banner4.jpg';
@@ -13,7 +12,8 @@ import banner from '../assets/Valentines web banner-01.png'
 
 
 const mika = 'https://naswabucket.s3.amazonaws.com/1703154120994.jpg';
-const ramtons = 'https://naswabucket.s3.amazonaws.com/1703164037121.jpg';
+const blender = 'https://naswabucket.s3.amazonaws.com/1705232237304.jpeg';
+const kitchen = 'https://naswabucket.s3.amazonaws.com/1703164037121.jpg';
 
 const categories = [
   { name: 'Apple Devices', image: apple },
@@ -21,7 +21,7 @@ const categories = [
   { name: 'Electronics', image: tv },
   { name: 'Kitchen Appliances', image: kitchen },
   { name: 'Cookware', image: mika },
-  { name: 'Ramtons', image: ramtons }, 
+  { name: 'Bleder', image: blender }, 
 ];
 
 const Hero = () => {
