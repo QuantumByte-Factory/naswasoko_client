@@ -50,9 +50,9 @@ const Hero = () => {
       </div>
       <div className='z-10 gap-[2%] py-[2%] grid grid-cols-2 md:grid-cols-6 mb-3 justify-center bg-gray-50 bg-opacity-70 mx-0 px-[5%] md:px-[5%] '>
         {categories.map((category, index) => (
-          <Link to={category.name === 'Apple Devices' ? '/apple-gallery' : `/search?query=${category.name}`} key={index} className="bg-white p-3 flex cursor-pointer flex-col shadow-md w-full md:w-[180px] bg-opacity-70 justify-center text-center h-[240px]">
+          <Link to={category.name === 'Apple Devices' ? '/apple-gallery' : `/search?query=${category.name}`} key={index} className="bg-white p-3 flex cursor-pointer flex-col justify-between shadow-md w-full md:w-[180px] bg-opacity-70 justify-center text-center h-[250px]">
             <p className='text-[17px] font-medium mb-4'>{category.name}</p>
-            <img className='w-[90%] h-auto' src={category.image} alt={category.name} />
+            <img className='w-full h-auto' src={category.image} alt={category.name} />
           </Link>
         ))}
       </div>
