@@ -21,7 +21,7 @@ const categories = [
   { name: 'Electronics', image: tv },
   { name: 'Kitchen Appliances', image: kitchen },
   { name: 'Cookware', image: mika },
-  { name: 'Bleder', image: blender }, 
+  { name: 'Blender', image: blender }, 
 ];
 
 const Hero = () => {
