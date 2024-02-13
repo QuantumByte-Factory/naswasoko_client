@@ -9,6 +9,8 @@ import banner1 from '../assets/banner5.jpg';
 import banner2 from '../assets/banner4.jpg';
 import banner3 from '../assets/banner6.jpg';
 
+import banner from '../assets/Valentines web banner-01.png'
+
 
 const mika = 'https://naswabucket.s3.amazonaws.com/1703154120994.jpg';
 const ramtons = 'https://naswabucket.s3.amazonaws.com/1703164037121.jpg';
@@ -23,7 +25,7 @@ const categories = [
 ];
 
 const Hero = () => {
-  const bannerImages = [banner1, banner2, banner3];
+  const bannerImages = [banner];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
