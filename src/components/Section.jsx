@@ -87,7 +87,7 @@ const Section = () => {
                             <span className="sr-only">Loading...</span>
                         </div>
                     ))
-                    : data.slice(2, 8).map((product) => (
+                    : data.slice(0, 6).map((product) => (
                         <Link
                             to={`/products/${product._id}`}
                             key={product.id}
@@ -141,7 +141,7 @@ const Section = () => {
                             <span className="sr-only">Loading...</span>
                         </div>
                     ))
-                    : data.slice(0, 6).map((product) => (
+                    : data.slice(6, 12).map((product) => (
                         <Link
                             to={`/products/${product._id}`}
                             key={product.id}
