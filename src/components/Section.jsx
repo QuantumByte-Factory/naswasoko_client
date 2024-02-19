@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { FaCartArrowDown } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import { useCart } from '../CartContext';
 
 const Section = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const navigate = useNavigate();
+    const { addToCart } = useCart();
 
     useEffect(() => {
         const fetchProducts = async (url, stateSetter, cacheKey) => {
