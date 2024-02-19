@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaYoutube } from 'react-icons/fa';
 import { FaFacebookF, FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
@@ -44,30 +45,31 @@ const Footer = () => {
                         </p>
                     </div>
 
-                    {/* Social Media Links */}
                     <div className="mb-8">
                         <h4 className="text-lg font-semibold mb-4">Find Us On</h4>
                         <div className="flex space-x-4">
-                            <a href="#facebook" className="text-xl">
+                            <a href="https://www.facebook.com/profile.php?id=61551680861041&mibextid=LQQJ4d" target='_blank' className="text-xl">
                                 <FaFacebookF />
                             </a>
-                            <a href="#twitter" className="text-xl">
+                            <a href="https://x.com/naswasoko?s=21&t=tYP3EP_zymYd7m_ktvjzFg" target='_blank' className="text-xl">
                                 <FaXTwitter />
                             </a>
-                            <a href="#instagram" className="text-xl">
+                            <a href="https://www.instagram.com/naswa.soko" target='_blamk' className="text-xl">
                                 <FaInstagram />
                             </a>
                             <a href="#linkedin" className="text-xl">
                                 <FaLinkedin />
                             </a>
+                            <a href="https://youtube.com/@NaswaSoko?si=GSLdkaeuvcpvrFdw" target='_blank' className="text-xl">
+                                <FaYoutube />
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                {/* Bottom Disclaimer */}
                 <div className="border-t border-gray-700 mt-8 pt-6 text-sm text-center">
                     <p>&copy; 2024 Naswasoko. All rights reserved.</p>
-                    {/* <p>Designed by YourName</p> */}
+                    {/* <p>Designed by QBF</p> */}
                 </div>
             </div>
         </footer>
