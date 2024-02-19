@@ -25,7 +25,7 @@ const categories = [
 ];
 
 const Hero = () => {
-  const bannerImages = [banner];
+  const bannerImages = [banner1, banner2, banner3];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
