@@ -15,7 +15,8 @@ import AppleGallery from './components/AppleGallery';
 
 function App() {
   return (
-    <Routes>
+    <div className='font-montserrat'>
+      <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/accounts/login' element={<Login />} />
       <Route path='/accounts/sign-up' element={<SignUp />} />
@@ -33,6 +34,7 @@ function App() {
       <Route path='/apple-gallery' element={<AppleGallery />} />
 
     </Routes>
+    </div>
   );
 }
 

@@ -190,13 +190,13 @@ const SingleProduct = () => {
                                         <p className="mb-2 text-[13px] font-light text-gray-500">
                                             comes in <span className="font-medium">{product.color?.title}</span>  color
                                         </p>
-                                        <div className="w-fit flex items-center gap-2 bg-green-100 p-2 ">
+                                        <div className="w-fit flex items-center gap-2 bg-[#F39121] p-2 ">
                                             <MdOutlineVerified />
                                             <span className="">In stock</span>
                                         </div>
                                         <div className="flex items-center my-2 gap-2">
                                             <span>Quantity:</span>
-                                            <span className="bg-green-100 p-2">
+                                                <span className="bg-[#F39121] p-2">
                                                 {product.quantity} items left
                                             </span>
                                         </div>
