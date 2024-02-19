@@ -8,7 +8,7 @@ import banner1 from '../assets/banner5.jpg';
 import banner2 from '../assets/banner4.jpg';
 import banner3 from '../assets/banner6.jpg';
 
-import banner from '../assets/Valentines web banner-01.png'
+// import banner from '../assets/Valentines web banner-01.png'
 
 
 const mika = 'https://naswabucket.s3.amazonaws.com/1707588281385.jpeg';

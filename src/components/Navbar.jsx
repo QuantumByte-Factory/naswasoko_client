@@ -64,7 +64,7 @@ const Navbar = () => {
                                     <Link to={`/orders/${user._id}`} className="">{user.fullName}</Link>
                                 </div> : <>
                                     <Link to='/accounts/sign-up' className="bg-gray-100 flex py-1 justify-center text-black">
-                                        Sign Up
+                                       Register
                                     </Link>
                                     <Link to='/accounts/login' className="bg-black mt-2 flex py-1 justify-center text-white">
                                         Login
@@ -83,9 +83,9 @@ const Navbar = () => {
                         <Link to="/featured" className={`text-${location.pathname === '/featured' ? 'white' : 'gray-400'} hover:text-white`}>
                             Featured
                         </Link>
-                        <Link to="/discounts" className={`text-${location.pathname === '/discounts' ? 'white' : 'gray-400'} hover:text-white`}>
+                        {/* <Link to="/discounts" className={`text-${location.pathname === '/discounts' ? 'white' : 'gray-400'} hover:text-white`}>
                             Discounts
-                        </Link>
+                        </Link> */}
                     </ul>
                 </div>
 
@@ -113,7 +113,7 @@ const Navbar = () => {
                             <FaUserCircle size={24} />
                         </div> : <>
                             <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2">
-                                Sign Up
+                                Register
                             </Link>
                             <Link to='/accounts/login' className="bg-white text-black px-4 py-2">
                                 Login
