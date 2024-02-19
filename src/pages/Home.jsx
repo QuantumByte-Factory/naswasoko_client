@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 
 const Home = () => {
   return (
-    <div>
+    <div className='font-montserrat'>
       <Navbar />
       <Hero />
       <Section />

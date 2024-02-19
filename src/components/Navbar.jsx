@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MdMenu, MdOutlineSearch } from 'react-icons/md';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BsCart3 } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import { useCart } from '../CartContext';
@@ -14,6 +14,7 @@ const Navbar = () => {
     const navigate = useNavigate();
     const { cartItems } = useCart();
     const user = useUser();
+    const location = useLocation();
 
     const handleSearch = () => {
         navigate(`/search?query=${searchQuery}`);
@@ -62,28 +63,28 @@ const Navbar = () => {
                                 {user ? <div className='flex items-center gap-2'>
                                     <Link to={`/orders/${user._id}`} className="">{user.fullName}</Link>
                                 </div> : <>
-                                        <Link to='/accounts/sign-up' className="bg-gray-100 flex py-1 justify-center text-black">
-                                            Sign Up
-                                        </Link>
-                                        <Link to='/accounts/login' className="bg-black mt-2 flex py-1 justify-center text-white">
-                                            Login
-                                        </Link>
+                                    <Link to='/accounts/sign-up' className="bg-gray-100 flex py-1 justify-center text-black">
+                                        Sign Up
+                                    </Link>
+                                    <Link to='/accounts/login' className="bg-black mt-2 flex py-1 justify-center text-white">
+                                        Login
+                                    </Link>
                                 </>}
-                                
+
                             </div>}
                     </div>
                     <ul className="hidden md:flex space-x-4 text-[14px]">
-                        <Link to="/" className="text-white hover:text-gray-400">
+                        <Link to="/" className={`text-${location.pathname === '/' ? 'white' : 'gray-400'} hover:text-gray-400`}>
                             Home
                         </Link>
-                        <Link to="/shop/all-products" className="text-gray-400 hover:text-white">
+                        <Link to="/shop/all-products" className={`text-${location.pathname.startsWith('/shop') ? 'white' : 'gray-400'} hover:text-white`}>
                             Shop
                         </Link>
-                        <Link to="/" className="text-gray-400 hover:text-white">
+                        <Link to="/featured" className={`text-${location.pathname === '/featured' ? 'white' : 'gray-400'} hover:text-white`}>
                             Featured
                         </Link>
-                        <Link to="/" className="text-gray-400 hover:text-white">
-                            Discounts   
+                        <Link to="/discounts" className={`text-${location.pathname === '/discounts' ? 'white' : 'gray-400'} hover:text-white`}>
+                            Discounts
                         </Link>
                     </ul>
                 </div>
