@@ -94,12 +94,12 @@ const SingleProduct = () => {
     };
 
     const shareOnFacebook = () => {
-        const shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+        const shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}\nhttps://naswasoko.co.ke`;
         window.open(shareLink, '_blank');
     };
 
     const shareOnWhatsApp = () => {
-        const shareText = `Check out this product: ${product.title}\nPrice: Ksh ${product.price.toLocaleString('KES')}\n${window.location.href}`;
+        const shareText = `Check out this product: ${product.title}\nPrice: Ksh ${product.price.toLocaleString('KES')}\n${window.location.href}\nhttps://naswasoko.co.ke`;
         const whatsappLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
         window.open(whatsappLink, '_blank');
     };
@@ -109,7 +109,7 @@ const SingleProduct = () => {
     };
 
     const shareOnTwitter = () => {
-        const shareText = `Check out this awesome product: ${product.title}!\n#Product #Shopping #Naswasoko\n${window.location.href}`;
+        const shareText = `Check out this awesome product: ${product.title}!\n#Product #Shopping #Naswasoko\n${window.location.href}\nhttps://naswasoko.co.ke`;
         const twitterLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
         window.open(twitterLink, '_blank');
     };
