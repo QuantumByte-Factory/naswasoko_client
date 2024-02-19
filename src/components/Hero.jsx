@@ -11,7 +11,7 @@ import banner3 from '../assets/banner6.jpg';
 import banner from '../assets/Valentines web banner-01.png'
 
 
-const mika = 'https://naswabucket.s3.amazonaws.com/1703154120994.jpg';
+const mika = 'https://naswabucket.s3.amazonaws.com/1707588281385.jpeg';
 const blender = 'https://naswabucket.s3.amazonaws.com/1705232237304.jpeg';
 const kitchen = 'https://naswabucket.s3.amazonaws.com/1703164037121.jpg';
 
@@ -21,7 +21,7 @@ const categories = [
   { name: 'Electronics', image: tv },
   { name: 'Kitchen Appliances', image: kitchen },
   { name: 'Cookware', image: mika },
-  { name: 'Blender', image: blender }, 
+  { name: 'Blender', image: blender },
 ];
 
 const Hero = () => {
@@ -50,9 +50,9 @@ const Hero = () => {
       </div>
       <div className='z-10 gap-[2%] py-[2%] grid grid-cols-2 md:grid-cols-6 mb-3 justify-center bg-gray-50 bg-opacity-70 mx-0 px-[5%] md:px-[5%] '>
         {categories.map((category, index) => (
-          <Link to={category.name === 'Apple Devices' ? '/apple-gallery' : `/search?query=${category.name}`} key={index} className="bg-white p-3 flex cursor-pointer flex-col justify-between shadow-md w-full md:w-[180px] bg-opacity-70 justify-center text-center h-[250px]">
+          <Link to={category.name === 'Apple Devices' ? '/apple-gallery' : `/search?query=${category.name}`} key={index} className="bg-white p-3 flex cursor-pointer flex-col shadow-md w-full md:w-[180px] bg-opacity-70 text-center h-[280px]">
             <p className='text-[17px] font-medium mb-4'>{category.name}</p>
-            <img className='w-full h-auto' src={category.image} alt={category.name} />
+            <img className='w-[180px] h-auto my-auto' src={category.image} alt={category.name} />
           </Link>
         ))}
       </div>
