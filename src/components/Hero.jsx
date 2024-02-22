@@ -4,11 +4,11 @@ import apple from '../assets/apple.jpeg'
 import tv from '../assets/tv.png'
 import home from '../assets/home.jpeg'
 
-import banner1 from '../assets/banner5.png';
-import banner2 from '../assets/banner4.png';
-import banner3 from '../assets/banner6.png';
+import banner1 from '../assets/pic1.jpg';
+import banner2 from '../assets/pic2.jpg';
+import banner3 from '../assets/pic3.jpg';
 
-// import banner from '../assets/Valentines web banner-01.png'
+import banner from '../assets/Valentines web banner-01.png'
 
 
 const mika = 'https://naswabucket.s3.amazonaws.com/1707588281385.jpeg';
