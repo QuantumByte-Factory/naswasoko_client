@@ -63,10 +63,10 @@ const Navbar = () => {
                                 {user ? <div className='flex items-center gap-2'>
                                     <Link to={`/orders/${user._id}`} className="">{user.fullName}</Link>
                                 </div> : <>
-                                    <Link to='/accounts/sign-up' className="bg-gray-100 flex py-1 justify-center text-black">
+                                    <Link to='/accounts/sign-up' className="bg-[#F39121] flex py-1 justify-center text-black">
                                        Register
                                     </Link>
-                                    <Link to='/accounts/login' className="bg-black mt-2 flex py-1 justify-center text-white">
+                                    <Link to='/accounts/login' className="bg-[#F39121]  mt-2 flex py-1 justify-center text-white">
                                         Login
                                     </Link>
                                 </>}
@@ -83,9 +83,6 @@ const Navbar = () => {
                         <Link to="/featured" className={`text-${location.pathname === '/featured' ? 'white' : 'gray-400'} hover:text-white`}>
                             Featured
                         </Link>
-                        {/* <Link to="/discounts" className={`text-${location.pathname === '/discounts' ? 'white' : 'gray-400'} hover:text-white`}>
-                            Discounts
-                        </Link> */}
                     </ul>
                 </div>
 
@@ -94,7 +91,7 @@ const Navbar = () => {
                         type="text"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Search..."
+                        placeholder="Search products here..."
                         className="bg-transparent py-2 focus:outline-none outline-none w-full"
                         style={{ width: '60%' }}
                     />
@@ -112,10 +109,10 @@ const Navbar = () => {
                             <Link to={`/orders/${user._id}`} className="">{user.fullName}</Link>
                             <FaUserCircle size={24} />
                         </div> : <>
-                            <Link to='/accounts/sign-up' className="bg-black text-white px-4 py-2">
+                            <Link to='/accounts/sign-up' className="bg-[#F39121] text-white px-4 rounded-full py-2">
                                 Register
                             </Link>
-                            <Link to='/accounts/login' className="bg-white text-black px-4 py-2">
+                            <Link to='/accounts/login' className="bg-[#F39121] rounded-full text-white px-4 py-2">
                                 Login
                             </Link>
                         </>}
