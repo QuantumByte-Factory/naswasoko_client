@@ -10,57 +10,49 @@ const Section = () => {
     const navigate = useNavigate();
     const { addToCart } = useCart();
 
-    useEffect(() => {
-        const fetchProducts = async (url, stateSetter, cacheKey) => {
-            try {
-                const cachedData = localStorage.getItem(cacheKey);
-                if (cachedData) {
-                    stateSetter(JSON.parse(cachedData));
-                    setLoading(false);
-                    return;
-                }
-
-                const response = await fetch(url);
-                if (response.ok) {
-                    const fetchedData = await response.json();
-                    stateSetter(fetchedData);
-                    setLoading(false);
-
-                    localStorage.setItem(cacheKey, JSON.stringify(fetchedData));
-                } else {
-                    console.error(`Failed to fetch products from ${url}`);
-                }
-            } catch (error) {
-                console.error(`Error fetching products from ${url}:`, error);
+    const fetchAndCacheData = async (url, stateSetter, cacheKey) => {
+        try {
+            const cachedData = localStorage.getItem(cacheKey);
+            if (cachedData) {
+                stateSetter(JSON.parse(cachedData));
+                setLoading(false);
+                return;
             }
-        };
 
-        fetchProducts('https://naswa.onrender.com/api/products/new', setProducts, 'newProducts');
+            const response = await fetch(url);
+            if (response.ok) {
+                const fetchedData = await response.json();
+                stateSetter(fetchedData);
+                setLoading(false);
 
-        fetchProducts('https://naswa.onrender.com/api/products', setData, 'allProducts');
+                localStorage.setItem(cacheKey, JSON.stringify(fetchedData));
+            } else {
+                console.error(`Failed to fetch data from ${url}`);
+            }
+        } catch (error) {
+            console.error(`Error fetching data from ${url}:`, error);
+        }
+    };
+
+    useEffect(() => {
+        fetchAndCacheData(
+            'https://naswa.onrender.com/api/products/new',
+            setProducts,
+            'newProducts'
+        );
     }, []);
+
+    useEffect(() => {
+        fetchAndCacheData(
+            'https://naswa.onrender.com/api/products',
+            setData,
+            'allProducts'
+        );
+    }, []);
+
     const handleNavigate = () => {
         navigate(`/search?query=electronics`);
     }
-
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await fetch('https://naswa.onrender.com/api/products');
-                if (response.ok) {
-                    const data = await response.json();
-                    setData(data);
-                    setLoading(false);
-                } else {
-                    console.error('Failed to fetch products');
-                }
-            } catch (error) {
-                console.error('Error fetching products:', error);
-            }
-        };
-
-        fetchProducts();
-    }, []);
 
     return (
         <div className="px-[5%] flex flex-col gap-[2%]">
@@ -89,7 +81,7 @@ const Section = () => {
                             <span className="sr-only">Loading...</span>
                         </div>
                     ))
-                    : data.slice(0, 6).map((product) => (
+                    : data.slice(0, 5).map((product) => (
                         <Link
                             to={`/products/${product._id}`}
                             key={product.id}
@@ -101,7 +93,9 @@ const Section = () => {
                                 alt={product.title}
                             />
                             <div className="p-4">
-                                <p className="font-medium text-black text-[14px]">{product.title}</p>
+                            <p className="font-medium text-black text-[14px]">
+                                {product.title.length > 20 ? `${product.title.substring(0, 20)}...` : product.title}
+                            </p>
                                 <div className="w-full items-center flex justify-between">
                                     <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}.00</p>
                                     <p className="text-gray-400 font-light text-[13px]">{product?.brand?.title}</p>
@@ -143,7 +137,7 @@ const Section = () => {
                             <span className="sr-only">Loading...</span>
                         </div>
                     ))
-                    : data.slice(6, 12).map((product) => (
+                    : data.slice(6, 11).map((product) => (
                         <Link
                             to={`/products/${product._id}`}
                             key={product.id}
@@ -155,7 +149,9 @@ const Section = () => {
                                 alt={product.title}
                             />
                             <div className="p-4">
-                                <p className="font-medium text-black text-[14px]">{product.title}</p>
+                            <p className="font-medium text-black text-[14px]">
+                                {product.title.length > 20 ? `${product.title.substring(0, 20)}...` : product.title}
+                            </p>
                                 <div className="w-full items-center flex justify-between">
                                     <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}.00</p>
                                     <p className="text-gray-400 font-light text-[13px]">{product?.brand?.title}</p>
@@ -210,7 +206,9 @@ const Section = () => {
                                     alt={product.title}
                                 />
                                 <div className="p-4">
-                                    <p className="font-medium text-black text-[14px]">{product.title}</p>
+                                <p className="font-medium text-black text-[14px]">
+                                    {product.title.length > 20 ? `${product.title.substring(0, 20)}...` : product.title}
+                                </p>
                                     <div className="w-full items-center flex justify-between">
                                         <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}.00</p>
                                         <p className="text-gray-400 font-light text-[13px]">{product?.brand?.title}</p>
