@@ -22,18 +22,18 @@ const Products = () => {
     const loader = useRef(null);
 
     useEffect(() => {
-        const fetchProducts = async () => {
+        const fetchAndCacheProducts = async () => {
             setLoading(true);
             try {
                 const cacheKey = `productsPage${currentPage}`;
                 const cachedData = localStorage.getItem(cacheKey);
-
+    
                 if (cachedData) {
                     setProducts(prevProducts => [...prevProducts, ...JSON.parse(cachedData)]);
                     setLoading(false);
                     return;
                 }
-
+    
                 const response = await fetch(`https://naswa.onrender.com/api/products?page=${currentPage}`);
                 if (response.ok) {
                     const data = await response.json();
@@ -44,12 +44,14 @@ const Products = () => {
                 }
             } catch (error) {
                 console.error('Error fetching products:', error);
+            } finally {
+                setLoading(false);
             }
-            setLoading(false);
         };
-
-        fetchProducts();
+    
+        fetchAndCacheProducts();
     }, [currentPage]);
+    
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
@@ -171,7 +173,7 @@ const Products = () => {
                             <Link
                                 to={`/products/${product._id}`}
                                 key={product.id}
-                                className="flex hover:border-black cursor-pointer w-full md:w-[250px] justify-between h-full md:h-[350px] flex-col gap-[2%] border shadow-md"
+                                className="flex hover:border-black cursor-pointer w-full md:w-full justify-between h-full md:h-[350px] flex-col gap-[2%] border shadow-md"
                             >
                                 <img
                                     className='h-[200px] w-auto md:w-fit md:h-[50%] mx-auto py-2'
@@ -179,7 +181,9 @@ const Products = () => {
                                     alt={product.title}
                                 />
                                 <div className="p-4">
-                                    <p className="font-medium text-black text-[14px]">{product.title}</p>
+                                <p className="font-medium text-black text-[14px]">
+                                    {product.title.length > 20 ? `${product.title.substring(0, 20)}...` : product.title}
+                                </p>
                                     <div className="w-full items-center flex justify-between">
                                         <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}.00</p>
                                         <p className="text-gray-400 font-light text-[13px]">{product?.brand?.title}</p>
