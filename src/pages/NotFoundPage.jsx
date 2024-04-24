@@ -11,7 +11,7 @@ const NotFoundPage = () => {
                 <p className='mb-6 text-center font-semibold text-[124px] text-primary'>404!</p>
                 <p className="text-gray-600 mb-4">
                     Don't worry, let's get you back on track! You can go back to the
-                    <a href="/" className="text-black hover:underline"> homepage</a>
+                    <a href="/" className="text-black underline"> homepage</a>
                     {' '}or try using the navigation menu.
                 </p>
             </div>
