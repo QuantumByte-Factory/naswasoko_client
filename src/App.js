@@ -12,6 +12,7 @@ import SellerLogin from './pages/SellerLogin';
 import SellerRegister from './pages/SellerRegister';
 import ImageUpload from './components/ImageUpload';
 import AppleGallery from './components/AppleGallery';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
 
       <Route path='/test' element={<ImageUpload />} />
       <Route path='/apple-gallery' element={<AppleGallery />} />
+
+      <Route path='*' element={<NotFoundPage />} />
 
     </Routes>
     </div>
