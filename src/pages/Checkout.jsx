@@ -11,6 +11,9 @@ const Checkout = () => {
     const { cartItems, clearCart } = useCart();
     const [location, setLocation] = useState('');
     const [error, setError] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [email, setEmail] = useState('');
+
     const user = useUser();
     const navigate = useNavigate();
 
@@ -22,8 +25,10 @@ const Checkout = () => {
         const orderData = {
             products: cartItems.map(item => ({ product: item._id, quantity: item.quantity })),
             location,
+            phoneNumber,
+            email,
             user: user._id,
-        };
+        };        
 
         try {
             const response = await axios.post('https://naswa.onrender.com/api/v1/orders', orderData);
@@ -33,12 +38,10 @@ const Checkout = () => {
                 clearCart();
             } else {
                 console.error('Failed to place the order');
-                // Handle error scenario, show an error message to the user
                 setError('Failed to place the order');
             }
         } catch (error) {
             console.error('Error placing order:', error.message);
-            // Handle error scenario, show an error message to the user
             setError('Error placing order. Please try again later.');
         }
     };
@@ -62,6 +65,30 @@ const Checkout = () => {
                                 placeholder="City, Country"
                             />
                         </div>
+                        <div className="mb-4">
+                            <label htmlFor="phoneNumber" className="block text-gray-700 text-sm font-bold mb-2">Phone Number:</label>
+                            <input
+                                type="text"
+                                id="phoneNumber"
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                required
+                                className="w-full px-3 py-2 border focus:outline-none focus:border-black"
+                                placeholder="Phone Number"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                            <input
+                                type="email"
+                                id="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                className="w-full px-3 py-2 border focus:outline-none focus:border-black"
+                                placeholder="Email"
+                            />
+                        </div>
                         {error && <p className="text-red-500">{error}</p>}
                     </div>
                     <div>
@@ -76,6 +103,7 @@ const Checkout = () => {
                             </div>
                         ))}
                         <hr className="my-4" />
+                        <p className="text-gray-500 0text-[15px]">Note:Delivery charges may apply based on location.</p>
                         <div className="flex justify-between">
                             <p className="font-semibold">Total:</p>
                             <p className="font-semibold">Ksh {calculateTotal().toLocaleString('en-US')}</p>
