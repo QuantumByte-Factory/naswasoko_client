@@ -159,7 +159,7 @@ const SearchedProducts = () => {
                 <Link
                   to={`/products/${product._id}`}
                   key={product.id}
-                  className="flex hover:border-black cursor-pointer w-full md:w-[250px] h-auto md:h-[350px] flex-col gap-[2%] border shadow-md"
+                  className="flex hover:border-black cursor-pointer justify-between w-full md:w-full h-auto md:h-[350px] flex-col gap-[2%] border shadow-md"
                 >
                   <img
                     className='h-[200px] w-auto md:w-fit md:h-[50%] mx-auto py-2'
@@ -167,7 +167,9 @@ const SearchedProducts = () => {
                     alt={product.title}
                   />
                   <div className="p-4">
-                    <p className="font-medium text-black text-[14px]">{product.title}</p>
+                    <p className="font-medium text-black text-[14px]">
+                    {product.title.length > 20 ? `${product.title.substring(0, 20)}...` : product.title}
+                  </p>
                     <div className="w-full items-center flex justify-between">
                       <p className="text-[16px] font-medium text-gray-700 py-2">Ksh {product.price.toLocaleString("KES")}.00</p>
                       <p className="text-gray-400 font-light text-[13px]">{product?.brand?.title}</p>
